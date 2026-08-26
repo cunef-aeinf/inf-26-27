@@ -41,11 +41,11 @@ class: center, middle, inverse, title-slide
 ]
 ---
 
-## Análisis Exploratioro de los Datos
+## Análisis Exploratorio de los Datos
 
 * El arte de observar los datos, generar hipótesis y testearlas.
 
-* **Objetivo**: generar preguntas prometedoras para, posteriormente, explorarlas en mayor profunidad
+* **Objetivo**: generar preguntas prometedoras para, posteriormente, explorarlas en mayor profundidad
 
 ```{r pressure, echo=FALSE, out.width = '80%',  fig.align='center'}
 knitr::include_graphics("img/data-science-explore.png")
@@ -81,7 +81,7 @@ En general, **necesitamos**
 
 ---
 
-## Graḿatica de transformación de datos
+## Gramática de transformación de datos
 
 Aprenderemos cómo hacer esto de forma **reproducible** con el paquete `dplyr` 
 
@@ -90,10 +90,10 @@ Aprenderemos cómo hacer esto de forma **reproducible** con el paquete `dplyr`
 knitr::include_graphics("img/dplyr-part-of-tidyverse.png")
 ```
 
-Similar a `ggplot2`, `dplyr` introduce una grámatica para la transformación de datos
+Similar a `ggplot2`, `dplyr` introduce una gramática para la transformación de datos
 ---
 
-## Graḿatica de transformación de datos
+## Gramática de transformación de datos
 
 Algunas de las funciones (verbos) que aprenderemos
 
@@ -118,7 +118,7 @@ Todos los verbos funcionan de manera similar:
 
 - Primer argumento es el data frame
 
-- Lo siguientes argumentos especifican qué hacer con el data frame, usando los nombres de las variables (sin comillas)
+- Los siguientes argumentos especifican qué hacer con el data frame, usando los nombres de las variables (sin comillas)
 
 - La salida es otro data frame
 
@@ -194,7 +194,7 @@ gapminder %>%
 ```
 ]
 
-**NOTA**: los verbos no modifican el data frames. Para guardar el output como un nuevo dataframe
+**NOTA**: los verbos no modifican el data frame. Para guardar el output como un nuevo dataframe
 ```{r, eval=F}
 esperanza_vida <- gapminder %>%
   select(lifeExp) 
@@ -275,7 +275,7 @@ class: center, middle, inverse
 ---
 ## Ordenar datos
 
-Seleccionemos país, año y esperanza de vida y ordenemos en orden **creciente** de esperanzada de vida
+Seleccionemos país, año y esperanza de vida y ordenemos en orden **creciente** de esperanza de vida
 
 ```{r}
 gapminder %>%
@@ -285,7 +285,7 @@ gapminder %>%
 ---
 ## Ordenar datos
 
-Seleccionemos país, año y esperanza de vida y ordenemos en orden **decreciente** de esperanzada de vida
+Seleccionemos país, año y esperanza de vida y ordenemos en orden **decreciente** de esperanza de vida
 
 ```{r}
 gapminder %>%
@@ -360,7 +360,7 @@ gapminder %>%
 
 * La estructura pipe está implementada en el paquete `magrittr` (que se carga con `tidyverse`)
 
-3. Por útimo, el resultado del select pasa a `arrange`
+3. Por último, el resultado del select pasa a `arrange`
 
 ```{r, eval=F}
 gapminder %>% 
@@ -398,7 +398,7 @@ gapminder %>%
 
 ## Seleccionar filas
 
-Cómo seleccionarías las tres últimas filas de `gapminder` usando `slice`?
+¿Cómo seleccionarías las tres últimas filas de `gapminder` usando `slice`?
 
 --
 
@@ -446,7 +446,7 @@ gapminder %>%
 ---
 ## Filtrado
 
-Para construír filtros complejos, hay que manejar los operadores lógicos 
+Para construir filtros complejos, hay que manejar los operadores lógicos 
 
 <br>
 
@@ -454,7 +454,7 @@ Para construír filtros complejos, hay que manejar los operadores lógicos
 Operador    | Definición                   || Operador     | Definición
 ------------|------------------------------||--------------|----------------
 `<`         | Menor que                    ||`x`&nbsp;&#124;&nbsp;`y`     | `x` OR `y` 
-`<=`        |	Menor o igual que            ||`is.na(x)`    | ¿es `x` is `NA`?
+`<=`        |	Menor o igual que            ||`is.na(x)`    | ¿es `x` `NA`?
 `>`         | Mayor que                    ||`!is.na(x)`   | ¿ `x` no es `NA`?
 `>=`        |	Mayor o igual que            ||`x %in% y`    | `x` pertenece a `y`
 `==`        |	Igual a                      ||`!(x %in% y)` |`x` no pertenece `y`
@@ -490,7 +490,7 @@ knitr::include_graphics("img/logical_operators.png")
 
 Por defecto, los múltiples argumentos de `filter` se combinan con el operador `AND`
 
-Ejemplo: seleccionar países de América que en el 2007 tuvieran esperanza de vida superior a 75 o un PIB per cápita inferior a 6000
+Ejemplo: seleccionar países de América que en el 2007 tuvieran esperanza de vida superior a 77 o un PIB per cápita inferior a 4000
 
 ```{r}
 gapminder %>%
@@ -648,7 +648,7 @@ Múltiples funciones útiles para añadir columnas
 
 * Comparaciones lógicas
 
-* Rankings: `minrank()`
+* Rankings: `min_rank()`
 
 ---
 
@@ -769,10 +769,10 @@ Para desagrupar completamente podemos usar `ungroup()`
 
 ```{r}
 # Desagrupamos el dataframe
-gampminder_ng <- gapminder %>% 
+gapminder_ng <- gapminder %>% 
   ungroup()
 
-gampminder_ng %>% slice(1)
+gapminder_ng %>% slice(1)
 ```
 
 ---

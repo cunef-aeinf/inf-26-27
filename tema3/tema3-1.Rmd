@@ -82,7 +82,7 @@ class: center, middle, inverse
 ---
 ## Importación de datos
 
-* Aprederemos cómo descargar y leer datos en R
+* Aprenderemos cómo descargar y leer datos en R
 
 * Nos centraremos en **datos tabulares**
 
@@ -227,7 +227,7 @@ Ahora veremos cómo leer datos con el paquete `readr` que es parte de `tidyverse
 library(tidyverse)
 ```
 
-Las funciones de `readr` se encargan de transfromar ficheros planos en *tibbles*
+Las funciones de `readr` se encargan de transformar ficheros planos en *tibbles*
 
 
 ---
@@ -349,7 +349,7 @@ df
 ```
 
 ---
-# Lectura de datos en excell
+# Lectura de datos en excel
 
 Necesitamos el paquete `library(readxl)`.
 
@@ -530,7 +530,7 @@ parse_date("01/04/22", "%d/%m/%y")
 
 :   `%S` segundos, número entero.
 
-:   `%OS` rsegundos reales.
+:   `%OS` segundos reales.
 
 :   `%Z` Franja horaria (e.g. `America/Chicago`).
 
@@ -552,7 +552,7 @@ Intentemos entender
 
 1. Cómo `readr` acierta automáticamente el tipo de columna para parsearla
 
-Para esto, `readr` lee las primeras 1000 filas y cada columna y usa una heurística para adivinar el tipo. Posteriormente, utiliza el parser correspondiente.
+Para esto, `readr` lee las primeras 1000 filas de cada columna y usa una heurística para adivinar el tipo. Posteriormente, utiliza el parser correspondiente.
 
 ```{r}
 guess_parser("2022-01-01")
@@ -600,7 +600,7 @@ Tres funciones principales
 
 * `write_tsv()`: escribe en tsv
 
-* `write_excel_csv()`: escribe en excell
+* `write_excel_csv()`: escribe en excel
 
 El uso
 
@@ -629,7 +629,7 @@ iris_tibble %>% head(5)
 ---
 ## Otros datos
 
-Para el resto de tipos de datos que no hemos estudiado, existen paqutes de tidyverse 
+Para el resto de tipos de datos que no hemos estudiado, existen paquetes de tidyverse 
 
 * **haven**: SPSS, Stata, SAS
 
@@ -648,7 +648,7 @@ Para el resto de tipos de datos que no hemos estudiado, existen paqutes de tidyv
 
 * Es un formato común en APIs
 
-* Los datos se guardan objetos con pares atributo-valor y matrices
+* Los datos se guardan en objetos con pares atributo-valor y matrices
 
 ---
 ## Leer JSON
@@ -817,7 +817,7 @@ copy_to(sc, mtcars, overwrite = TRUE) %>%
 **Hadoop + MapReduce**
 
 - Archivos **muy grandes** (multi‑TB o más) y **no** necesitas interacción rápida.
-- Procesos **programados** (diarios/semana), alta **fiabilidad**.
+- Procesos **programados** (diarios/semanales), alta **fiabilidad**.
 
 ---
 

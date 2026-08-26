@@ -97,7 +97,7 @@ Esta variación puede estar asociada a distintos fenómenos:
 
 El patrón de variación da información interesante...
 
-... que se destila visualizado la **distribución de valores de la variable**
+... que se destila visualizando la **distribución de valores de la variable**
 
 ---
 
@@ -119,7 +119,7 @@ ggplot(data=mtcars, aes(x=gear)) +
 ---
 ## Variación: variable categórica
 
-La altura de las barras muestran el número de observaciones. 
+La altura de las barras muestra el número de observaciones. 
 ¿Cómo obtendrías este número?
 
 --
@@ -140,9 +140,9 @@ mtcars %&gt;% group_by(gear)  %&gt;% summarise(n())
 ```
 
 ---
-## Variación: variable contínua
+## Variación: variable continua
 
-También habíamos visto cómo visualizar la distribución de variables contínuas
+También habíamos visto cómo visualizar la distribución de variables continuas
 
 ``` r
 ggplot(data=iris, aes(x=Petal.Length)) + 
@@ -202,16 +202,16 @@ Los *clusters* de valores similares sugieren que existen subgrupos en los datos.
 * ¿Explica la variable especie esta separación?
 
 ---
-## Variación: variable contínua
+## Variación: variable continua
 
 * Si se quieren visualizar varios histogramas en la misma gráfica, se pueden usar colores
 
 * A veces más claro usar `geom_freqpoly()`
 
-* Igual que histograma, pero pintado con lineas poligonales
+* Igual que histograma, pero pintado con líneas poligonales
 
 ---
-## Variación: variable contínua
+## Variación: variable continua
 
 
 ``` r
@@ -224,7 +224,7 @@ ggplot(data=iris, aes(x=Petal.Length, fill=Species)) +
 
 
 ---
-## Variación: variable contínua
+## Variación: variable continua
 
 
 ``` r
@@ -388,14 +388,14 @@ class: center, middle, inverse
 
 - La manera de visualizar covariación, depende del tipo de variables (como vimos)
 
-  * Categórica - Contínua
+  * Categórica - Continua
   * Categórica - Categórica
-  * Contínua - Contínua
+  * Continua - Continua
   
   
 ---
 
-## Covariación: Categórica - Contínua
+## Covariación: Categórica - Continua
 
 
 ``` r
@@ -407,7 +407,7 @@ ggplot(data=diamonds, aes(x=price, color=cut)) +
 
 ---
 
-## Covariación: Categórica - Contínua
+## Covariación: Categórica - Continua
 
 `..density..` pinta densidad en eje y, que es la cuenta estandarizada para que el área de cada polígono sea 1
 
@@ -420,9 +420,9 @@ ggplot(data=diamonds, aes(x=price, y=..density.., color=cut)) +
 
 ---
 
-## Covariación: Categórica - Contínua
+## Covariación: Categórica - Continua
 
-¿Qué otra forma hay de visualizar covariación entre variables categóricas y contínuas?
+¿Qué otra forma hay de visualizar covariación entre variables categóricas y continuas?
 --
 
 
@@ -435,7 +435,7 @@ ggplot(data = mpg, aes(x = class, y = hwy)) +
 
 ---
 
-## Covariación: Categórica - Contínua
+## Covariación: Categórica - Continua
 
 A veces, conviene reordenar...
 
@@ -536,16 +536,16 @@ diamonds %&gt;%
 &lt;img src="tema2-3_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
-## Covariación: Contínua - Contínua
+## Covariación: Continua - Continua
 
 - Vimos cómo hacerlo con `geom_point()`
 
 - En datasets muy grandes, puntos solapan
 
-- ¿Idea? Usar `aplha`
+- ¿Idea? Usar `alpha`
 
 ---
-## Covariación: Contínua - Contínua
+## Covariación: Continua - Continua
 
 
 ``` r
@@ -556,7 +556,7 @@ ggplot(data=diamonds, aes(x = carat, y = price)) +
 &lt;img src="tema2-3_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
-## Covariación: Contínua - Contínua
+## Covariación: Continua - Continua
 
 Mejor
 
@@ -570,7 +570,7 @@ ggplot(data=diamonds, aes(x = carat, y = price)) +
 
 
 ---
-## Covariación: Contínua - Contínua
+## Covariación: Continua - Continua
 
 Mejor
 
@@ -584,7 +584,7 @@ ggplot(data=diamonds, aes(x = carat, y = price)) +
 &lt;img src="tema2-3_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
-## Covariación: Contínua - Contínua
+## Covariación: Continua - Continua
 
 Otra opción
 
@@ -598,7 +598,7 @@ ggplot(data=diamonds, aes(x = carat, y = price, )) +
 
 
 ---
-## Covariación: Contínua - Contínua
+## Covariación: Continua - Continua
 
 Otra opción (mismo número de puntos por cada bin)
 
@@ -629,7 +629,7 @@ Los patrones revelan pistas acerca de relaciones entre variables. Ante uno, cabe
 
 - ¿Qué otras variables afectan esta relación?
 
-- ¿Cambian la relación si observamos subgrupos de los datos?
+- ¿Cambia la relación si observamos subgrupos de los datos?
 
 
 Los **modelos** sirven para extraer patrones de los datos...

@@ -4,7 +4,7 @@
     <title>Tema 4</title>
     <meta charset="utf-8" />
     <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -34,7 +34,7 @@ class: center, middle, inverse, title-slide
 Las herramientas de modelización tienen tres objetivos fundamentales:
 
 * **Explorar** los datos: los modelos a veces revelan patrones que no son evidentes en
-las visualizaciónes (&gt;3D)
+las visualizaciones (&gt;3D)
 
 * **Generalizar** hallazgos de una muestra a una población determinada (inferencia)
 
@@ -97,7 +97,7 @@ Existen tres posibles explicaciones de esta asociación entre comer cereales y t
 
 * Comer cereales es la causa de que las mujeres estén delgadas
 
-* Que las mujeres estén delgadas es la causa de que coman cerales
+* Que las mujeres estén delgadas es la causa de que coman cereales
 
 * Existe una tercera variable que es causa de estas dos, **variable de confusión**
 
@@ -150,7 +150,7 @@ Según el proceso de recolección de los datos, distinguimos estudios:
 Las herramientas de modelización tienen tres objetivos fundamentales:
 
 * **Explorar** los datos: los modelos a veces revelan patrones que no son evidentes en
-las visualizaciónes (&gt;3D)
+las visualizaciones (&gt;3D)
 
 * **Generalizar** hallazgos de una muestra a la población (inferencia)
 
@@ -179,8 +179,8 @@ el foco en su uso como **técnicas de exploración** de datos.
 
 * Patrones vs residuos
 
-* Estudiaremos modelos que relacionan un serie de variables (variables predictoras)
-coon una variable de interés (variable respuesta)
+* Estudiaremos modelos que relacionan una serie de variables (variables predictoras)
+con una variable de interés (variable respuesta)
 
 ---
 ## ¿Qué son los modelos estadísticos?
@@ -190,7 +190,7 @@ Un modelo estadístico es un modelo matemático que incorpora un conjunto de sup
 ---
 ## ¿Qué son los modelos estadísticos?
 
-* Formalmente, un modelo estadísticos es un par `\((S, \mathcal{P})\)`: `\(S\)` es el conjunto de posibles observaciones y `\(\mathcal{P}\)` es una familia de distribuciones de probabilidad.
+* Formalmente, un modelo estadístico es un par `\((S, \mathcal{P})\)`: `\(S\)` es el conjunto de posibles observaciones y `\(\mathcal{P}\)` es una familia de distribuciones de probabilidad.
 
 * Asumimos que hay una distribución de probabilidad verdadera que gobierna la generación de datos.
 
@@ -249,7 +249,7 @@ $$
 \mathcal{P} = \{y \sim \mathcal{N}(\beta_0 + \beta_1 x, \sigma^2)\}
 $$
 
-El modelo de regresión lineal simple hace, implíctamente, 4 asunciones
+El modelo de regresión lineal simple hace, implícitamente, 4 asunciones
 
 1. **Linealidad**: el valor esperado de la variable respuesta corresponde con una función lineal de la covariable.
 
@@ -398,7 +398,7 @@ $$
 ---
 ## Regresión lineal
 
-1. Demostrar que los valores que minimizan la expresión anterior son los estimadores de maxima verosimilitud de `\(\beta_0\)` y `\(\beta_1\)`.
+1. Demostrar que los valores que minimizan la expresión anterior son los estimadores de máxima verosimilitud de `\(\beta_0\)` y `\(\beta_1\)`.
 
 2. Calcular expresiones para los estimadores de `\(\beta_0\)` y `\(\beta_1\)`.
 
@@ -416,7 +416,7 @@ $$
 ---
 ## Regresión lineal - Residuos
 
-Los residuos nos dicen cómo de lejos está cada valor predicho de su valore observado
+Los residuos nos dicen cómo de lejos está cada valor predicho de su valor observado
 
 `\(e_i = y_i - \hat{y}_i\)`
 
@@ -589,7 +589,7 @@ Aumentemos wt en una unidad
 ¿Cómo se interpreta `\(\beta_1\)`?
 
 ---
-## Interpretación de la regresión lineal - Ordenada en el orign
+## Interpretación de la regresión lineal - Ordenada en el origen
 
 El modelo de regresión lineal es
 
@@ -597,7 +597,7 @@ $$
 \widehat{ \text{mpg} } = \beta_0 + \beta_1 \text{wt}
 $$
 
-Sustituímos wt por cero
+Sustituimos wt por cero
 
 `\begin{eqnarray}
 \widehat{ \text{mpg} } = \beta_0 + \beta_1 \times 0 = \beta_0
@@ -655,7 +655,7 @@ ggplot(teacher, aes(x=years, y=base)) + geom_point() +
 ---
 ## Regresión Lineal: Predictores Categóricos
 
-* Hasta ahora hemos considerado la `\(x\)` contínua. ¿Qué sucede si es categórica?
+* Hasta ahora hemos considerado la `\(x\)` continua. ¿Qué sucede si es categórica?
 
 * Imaginemos que la `\(x\)` se refiere a género y toma dos valores: masculino y femenino.
 
@@ -928,7 +928,7 @@ Asheville, NC, que estaban activos el 25 de junio de 2020.
 Airbnbs.
 
 
-.pregunta[
+.question[
 ¿Cuál es el precio promedio por huésped por noche de los alquileres de Airbnb en junio de 2020, 
 con al menos diez reseñas en Asheville (códigos postales 28801 - 28806)?
 ]
@@ -970,7 +970,7 @@ abb %&gt;%
 
 ## ¿Estimador puntual?
 
-.pregunta[
+.question[
 Si quieres estimar un parámetro de la población, ¿prefieres informar un rango de valores en los que podría estar el parámetro, o un solo valor?
 ]
 
@@ -981,7 +981,7 @@ Si quieres estimar un parámetro de la población, ¿prefieres informar un rango
 exactamente el valor real del parámetro de la población.
 
 - Si aportamos un rango de valores plausibles,
-tenemos mayor probabilidad de capturar el valor real parámetro.
+tenemos mayor probabilidad de capturar el valor real del parámetro.
 
 
 ---
@@ -994,7 +994,7 @@ class: middle, center
 
 ## Variabilidad de los estadísticos muestrales
 
-Para construír un intervalo de confianza para la media de la población, 
+Para construir un intervalo de confianza para la media de la población, 
 necesitamos crear un rango de valores plausibles alrededor de la media muestral observada.
 
 - Recuerda que las muestras aleatorias pueden diferir entre sí. Si tomamos otra
@@ -1192,7 +1192,7 @@ abb %&gt;%
 ```
 
 - `specify()` se utiliza para especificar qué variable en nuestro dataset es la
-variable respuesta relevante (es decir, la variable que estamos sobre la que haremos
+variable respuesta relevante (es decir, la variable sobre la que haremos
 bootstrap).
 
 
@@ -1209,7 +1209,7 @@ abb %&gt;%
 * generate(reps = 15000, type = "bootstrap")
 ```
 
-- `generate()` generar las medias bootstrap
+- `generate()` genera las medias bootstrap
 
 ---
 
@@ -1226,7 +1226,7 @@ abb %&gt;%
 * calculate(stat = "mean")
 ```
 
-- `calculate()` calcula el estadístico muestra. En este caso usamos la media, pero podríamos calcular, por ejemplo,
+- `calculate()` calcula el estadístico muestral. En este caso usamos la media, pero podríamos calcular, por ejemplo,
 las medianas bootstrap.
 
 
@@ -1424,7 +1424,7 @@ class: center, middle
   - (Ley de Grandes Números / Consistencia de la distribución empírica).  
 - **Consecuencia**: Muestrear de `\(\hat{F}\)` imita suficientemente bien el acto de muestrear de `\(F\)`.  
 - **Bootstrap**:  
-  - Genera la **distribución bootstrap** del estimador, que (bajo condiciones razonables) se aproxima a la distribución real que tendría dicho estimador si muestrasemos repetidamente de la población.  
+  - Genera la **distribución bootstrap** del estimador, que (bajo condiciones razonables) se aproxima a la distribución real que tendría dicho estimador si muestreásemos repetidamente de la población.  
   - Esta aproximación permite estimar errores estándar, intervalos de confianza, etc., **sin** conocer `\(F\)` ni recurrir a fórmulas complicadas.
 
 
@@ -1443,10 +1443,10 @@ Este tema está fundamentalmente basado en  [R for Data Science](https://r4ds.ha
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightLines": true,
-"highlightStyle": "github",
-"countIncrementalSlides": false,
-"slideNumberFormat": "%current%"
+  "highlightLines": true,
+  "highlightStyle": "github",
+  "countIncrementalSlides": false,
+  "slideNumberFormat": "%current%"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

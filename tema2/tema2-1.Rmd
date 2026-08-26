@@ -40,11 +40,11 @@ class: center, middle, inverse, title-slide
 ]
 ---
 
-## Análisis Exploratioro de los Datos
+## Análisis Exploratorio de los Datos
 
 * El arte de observar los datos, generar hipótesis y testearlas.
 
-* **Objetivo**: generar preguntas prometedoras para, posteriormente, explorarlas en mayor profunidad
+* **Objetivo**: generar preguntas prometedoras para, posteriormente, explorarlas en mayor profundidad
 
 ```{r pressure, echo=FALSE, out.width = '80%',  fig.align='center'}
 knitr::include_graphics("img/data-science-explore.png")
@@ -180,7 +180,7 @@ Para seleccionar una única variable usar `$` (por nombre) o `[[` (por nombre o 
 # Extraer por nombre
 dt$Species[1:10]
 
-# Extraer por posicion
+# Extraer por posición
 dt[[5]][1:10]
 ```
 
@@ -227,7 +227,7 @@ Creación y estudio de representaciones visuales de los datos
 
 - **ggplot2** es el paquete de visualización de tidyverse
 -  `gg` significa Grammar of Graphics
-- Está inspirado en el libreo **Grammar of Graphics** de Leland Wilkinson
+- Está inspirado en el libro **Grammar of Graphics** de Leland Wilkinson
 
 ```{r, echo=FALSE, out.width = '60%',  fig.align='center'}
 knitr::include_graphics("img/grammar-of-graphics.png")
@@ -261,7 +261,7 @@ glimpse(gapminder)
 
 class: center, middle, inverse
 
-# Visualización: Visualizando la relación entre PIB per capita  y esperanza de vida
+# Visualización: Visualizando la relación entre PIB per cápita y esperanza de vida
 
 ---
 
@@ -367,7 +367,7 @@ ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +
      geom_point() 
 ```
 
-¿Cómo describirías la relación entre pib per capita y esperanza de vida?
+¿Cómo describirías la relación entre PIB per Cápita y esperanza de vida?
 
 ---
 ## Paso a Paso
@@ -377,7 +377,7 @@ ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +
      scale_x_log10()  #<<
 ```
 
-¿Cómo describirías la relación entre pib per capita y esperanza de vida?
+¿Cómo describirías la relación entre PIB per Cápita y esperanza de vida?
 
 
 ---
@@ -456,10 +456,10 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent,
 Según la naturaleza de la variable
 
 .small[
-aesthetics    | discreta                 | contínua
+aesthetics    | discreta                 | continua
 ------------- | ------------------------ | ------------
 color         | diferentes colores       | gradiente
-size          | pasos discretros         | mapeo lineal entre variable y radio
+size          | pasos discretos         | mapeo lineal entre variable y radio
 shape         | diferentes formas        | no funciona
 
 ]
@@ -557,13 +557,13 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 
 Utilizando los datos de la librería `gapminder`:
 
-* Filtra las obserevaciones correspondientes a los años 1957, 1967, 1977, 1987, 1997, 2007
+* Filtra las observaciones correspondientes a los años 1957, 1967, 1977, 1987, 1997, 2007
 
 * Representa la relación entre PIB per cápita y esperanza de vida por continentes y por años
 en diferentes gráficas usando **faceting**. El tamaño de los puntos ha de ser proporcional a la población.
 El color debe reflejar el continente. 
 
-* ¿Qué conlusiones extraes?
+* ¿Qué conclusiones extraes?
 
 
 ---
@@ -590,7 +590,7 @@ class: middle, center
 
 ## Tipos de variables
 
-- .vocab[Variables numéricas] pueden ser .vocab[contínuas] o .vocab[discretas] 
+- .vocab[Variables numéricas] pueden ser .vocab[continuas] o .vocab[discretas] 
     - *altura* es ?
     - *número de cigarros diarios* es ?
     - *distancia* es ?
@@ -611,7 +611,7 @@ class: center, middle
 
 ---
 
-## ¿Cómo podemos describir datos númericos univariantes?
+## ¿Cómo podemos describir datos numéricos univariantes?
 
 - .vocab[Forma:]
     - asimetría: simétrico, asimétrico a la derecha, asimétrica a la izquierda
@@ -718,7 +718,7 @@ class: center, middle
 
 ---
 
-## Visualización: datos bivariantes contínuo - categórico
+## Visualización: datos bivariantes continuo - categórico
 
 ```{r}
 ggplot(gapminder67, mapping = aes(x = continent, y = gdpPercap)) + 
@@ -726,13 +726,13 @@ ggplot(gapminder67, mapping = aes(x = continent, y = gdpPercap)) +
 ```
 
 ---
-## Visualización: datos bivariantes contínuo - categórico
+## Visualización: datos bivariantes continuo - categórico
 ```{r, echo=FALSE, out.width = '50%',  fig.align='center'}
 knitr::include_graphics("img/boxplot.png")
 ```
 
 ---
-## Visualización: datos bivariantes contínuo - continuo
+## Visualización: datos bivariantes continuo - continuo
 
 A veces queda bien añadir un ajuste
 ```{r, fig.align='center',out.extra='angle=90', fig.width=6, fig.height=4}
@@ -780,7 +780,7 @@ Los gráficos como histogramas, gráficos de barras o boxplots realizan transfor
 
 * Boxplots: calculan un resumen de la distribución y lo pintan en determinado formato
 
-El argumento para especificar el estadistico de resumen es  `stat`. Puedes ver su valor por defect en, e.g. `?geom_bar`
+El argumento para especificar el estadístico de resumen es  `stat`. Puedes ver su valor por defecto en, e.g. `?geom_bar`
 
 ---
 
