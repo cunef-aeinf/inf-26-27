@@ -40,7 +40,7 @@ class: center, middle, inverse, title-slide
 
 ### ¿Qué es R/RStudio?
 
-- R es un lenguaje de programación especializacido en estadística
+- R es un lenguaje de programación especializado en estadística
 - RStudio es una interfaz para programar en R
 
 &lt;img src="img/r-rstudio.png" width="80%" style="display: block; margin: auto;" /&gt;
@@ -150,7 +150,7 @@ a + 3
 
 
 ``` r
-b &lt;-1:10
+b &lt;- 1:10
 b
 ```
 
@@ -165,7 +165,7 @@ Los objetos guardados aparecen en la ventana de *Environment*
 
 &lt;img src="img/env.png" width="100%" style="display: block; margin: auto;" /&gt;
 
-El nombre de un objeto no puede empezar con un número, ni tampoco incluír ciertos caracteres especiales como `^`, `$`, `@`, etc.
+El nombre de un objeto no puede empezar con un número, ni tampoco incluir ciertos caracteres especiales como `^`, `$`, `@`, etc.
 
 ---
 ## Objetos
@@ -277,7 +277,7 @@ a
 ## [1] 1 2 3 4 5
 ```
 
-No solo podemos crear vectores de números!
+¡No solo podemos crear vectores de números!
 
 
 ``` r
@@ -329,7 +329,7 @@ sample(x = 1:10, size = 1)
 ```
 
 ```
-## [1] 10
+## [1] 2
 ```
 
 ``` r
@@ -338,7 +338,7 @@ sample(1:10, 1)
 ```
 
 ```
-## [1] 6
+## [1] 3
 ```
 
 Si no escribimos el nombre de los argumentos, debemos incluirlos en el orden correcto especificado en la documentación de la función.
@@ -359,7 +359,7 @@ args(sample)
 
 ¡Algunas tienen valores por defecto! Esto significa que si no especificamos un argumento, R usará el valor por defecto.
 
-Pregunta, ¿qué valores tiene por defecto la función `round()`?
+Pregunta: ¿qué valores tiene por defecto la función `round()`?
 
 **Buena práctica**: escribir nombre de argumentos (salvo quizás el primero).
 
@@ -375,9 +375,9 @@ Pregunta, ¿qué valores tiene por defecto la función `round()`?
 | `sum`      | Suma                         | 
 | `mean`     | Media                        | 
 | `median`   | Mediana                      | 
-| `var`      | Variaza                      | 
+| `var`      | Varianza                      | 
 | `sd`       | Dev. Est.                    | 
-| `quantile` | Cuantiles 0, 25, 50, 75, 100 | 
+| `quantile` | Percentiles 0, 25, 50, 75, 100 | 
 | `cor`      | Correlación                  | 
 
 ---
@@ -389,7 +389,7 @@ Pregunta, ¿qué valores tiene por defecto la función `round()`?
 una_funcion &lt;- function(){}
 ```
 
-* Función que genera 2 números entre 1 y 100 y devuelva su suma
+* Función que genere 2 números entre 1 y 100 y devuelva su suma
 
 --
 
@@ -413,7 +413,7 @@ a &lt;- gen2_1_100()
 ```
 
 ```
-## [1] 39 35
+## [1] 15 91
 ```
 
 ``` r
@@ -421,7 +421,7 @@ a
 ```
 
 ```
-## [1] 74
+## [1] 106
 ```
 
 ---
@@ -448,11 +448,11 @@ gen2_1_100()
 ```
 
 ```
-## [1] 65 94
+## [1] 10 10
 ```
 
 ```
-## [1] 159
+## [1] 20
 ```
 
 ---
@@ -465,11 +465,11 @@ gen2_1_100(10)
 ```
 
 ```
-##  [1] 35 24 38 59 19 13  8 22 55 89
+##  [1]  2  1 96 12 74 39 93 13 60 12
 ```
 
 ```
-## [1] 362
+## [1] 402
 ```
 
 
@@ -617,7 +617,7 @@ typeof(a)
 ## 1. Vectores atómicos
 ### Tipos de datos - Caracteres
 
-Los vectores tipo caracter (string) almacenan texto
+Los vectores tipo carácter (string) almacenan texto
 
 
 ``` r
@@ -824,7 +824,7 @@ hora
 ```
 
 ```
-## [1] "2025-08-29 17:18:38 CEST"
+## [1] "2026-08-26 12:30:40 CEST"
 ```
 
 ``` r
@@ -838,7 +838,7 @@ class(hora)
 ---
 ## 5.  Factores
 
-Se utilizan para almacenar variables categóricas, con un nivel de categorías fijo.
+Se utilizan para almacenar variables categóricas, con un conjunto fijo de niveles (categorías).
 
 
 ``` r
@@ -869,7 +869,7 @@ class(fumador)
 ---
 ## 6. Listas
 
-Hemos visto que los vectores atómicos agrupan valores individuales (del mismo tipos).
+Hemos visto que los vectores atómicos agrupan valores individuales (del mismo tipo).
 Las listas almacenan objetos de R.
 
 ``` r
@@ -885,12 +885,12 @@ milista
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
 ## [[3]]
-## [1] "2025-08-29 17:18:38 CEST"
+## [1] "2026-08-26 12:30:40 CEST"
 ```
 
 ---
 ## 7. Data Frames
-Versión bi-dimensional de una lista. Distintas columnas del data frame puede pueden contener tipos de datos. No obstante, todos los datos de cada columna han de ser del mismo tipo.
+Versión bi-dimensional de una lista. Distintas columnas del data frame pueden contener distintos tipos de datos. No obstante, todos los datos de cada columna han de ser del mismo tipo.
 Un dataframe se crea especificando las columnas (que son vectores atómicos)
 
 
@@ -943,10 +943,10 @@ class: center, middle, inverse
 
 ### Indexación por posición
 
-| Sintáxis    | Significado                   | 
+| Sintaxis    | Significado                   | 
 |:------------|:------------------------------| 
 | `x[3]`      | Tercer elemento               | 
-| `x[-3]`     | Todos menos terceros          | 
+| `x[-3]`     | Todos menos el tercero          | 
 | `x[2:4]`    | Elementos 2,3,4               | 
 | `x[-(2:4)]` | Todos menos 2,3,4             | 
 | `x[c(1,5)]` | Elementos 1 y 5               | 
@@ -957,7 +957,7 @@ class: center, middle, inverse
 ### Indexación por valor
 
 
-| Sintáxis             | Significado                         | 
+| Sintaxis             | Significado                         | 
 |:---------------------|:------------------------------------| 
 | `x[x==10]`           | Elementos de valor 10               | 
 | `x[x&lt;0]`             | Elementos menores a 0               | 
@@ -969,7 +969,7 @@ class: center, middle, inverse
 
 ### Indexación por nombre
 
-| Sintáxis             | Significado                         | 
+| Sintaxis             | Significado                         | 
 |:---------------------|:------------------------------------| 
 | `x["paciente1"]`     | Elementos con nombre paciente1      | 
 
@@ -1068,7 +1068,7 @@ df$paciente
 
 
 ``` r
-# Seleccinar los fumadores
+# Seleccionar los fumadores
 df[df$fumador == "SI", ]
 ```
 
@@ -1079,7 +1079,7 @@ df[df$fumador == "SI", ]
 ```
 
 ``` r
-# Seleccinar los menores de 33
+# Seleccionar los menores de 33
 df[df$edad &lt; 33, ]
 ```
 
@@ -1151,7 +1151,7 @@ Se pueden combinar expresiones lógicas con operadores Booleanos
 
 
 ``` r
-# Seleccionar los fumadores mayores de 60
+# Seleccionar los fumadores menores de 60
 df[df$fumador == "SI" &amp; df$edad &lt; 60,]
 ```
 
@@ -1282,11 +1282,11 @@ class: center, middle, inverse
 
 ## Condicionales y bucles
 
-Las condicionales y los bucles son las dos estructuras de programación más importantes cualquiera sea el lenguajes que utilicemos.
+Las condicionales y los bucles son las dos estructuras de programación más importantes cualquiera que sea el lenguaje que utilicemos.
 
 1. Las condicionales permiten ejecutar cierto código en función de si se cumple una condición lógica.
 
-2. Los bucles permiten repetir cierto código un número específíco de veces.
+2. Los bucles permiten repetir cierto código un número específico de veces.
 
 ---
 ## 1. Condicionales
@@ -1327,7 +1327,7 @@ Haz lo anterior con un único `if`.
 if (se cumple esto) {
   haz esto
 } else{
-  Sino haz esto otro
+  si no, haz esto otro
 }
 ```
 
@@ -1385,7 +1385,7 @@ ifelse(x==3, "es tres", "no es tres")
 ---
 ## 1. Condicionales
 
-La operación `ifelse`, a diferencia de `if`; **está vectorizada**.
+La operación `ifelse`, a diferencia de `if`, **está vectorizada**.
 Esto quiere decir que se aplica elemento a elemento sobre vectores. Por ejemplo
 
 
@@ -1395,7 +1395,7 @@ ifelse(x%%2==0, "Par", "Impar")
 ```
 
 ```
-## [1] "Par"   "Par"   "Par"   "Impar" "Par"
+## [1] "Impar" "Impar" "Par"   "Impar" "Impar"
 ```
 
 Con `if-else` esto daría error. 
@@ -1403,7 +1403,7 @@ Con `if-else` esto daría error.
 ---
 ## 1. Condicionales
 
-La generalización de `ifelse` a multiples condiciones es `case_when` de la librería `dplyr`.
+La generalización de `ifelse` a múltiples condiciones es `case_when` de la librería `dplyr`.
 
 
 ``` r

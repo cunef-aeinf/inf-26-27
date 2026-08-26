@@ -38,6 +38,8 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
   - [Diapositivas](./tema1/tema1.html)
 
 
+<!-- PENDIENTE DE PUBLICAR: descomentar cada tema a medida que avance el curso.
+
 ### Tema 2 : Análisis Exploratorio de los Datos
 - 2.1: Visualización de datos
   - [Diapositivas](./tema2/tema2-1.html)
@@ -49,7 +51,7 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
 
 - 2.3: Análisis Exploratorio de datos
   - [Diapositivas](./tema2/tema2-3.html)
- 
+
 
 ### Tema 3 : Data Wrangling
 
@@ -60,7 +62,7 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
   - 3.2: Organización de datos
     - [Diapositivas](./tema3/tema3-2.html)
 
- 
+
   - 3.3: Transformación de datos
     - [Diapositivas](./tema3/tema3-3.html)
 
@@ -68,27 +70,29 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
 ### Tema 4 : Modelización
   - [Diapositivas](./tema4/tema4.html)
 
- 
+
 ### Tema 5 : Comunicación de Resultados
   - [Diapositivas](./tema5/tema5.html)
-  
 
+-->
 
 
 ## **Laboratorios**
 
 
-### Lab 1 - Programación en R 
+### Lab 1 - Programación en R
   - [Ejercicios](./labs/lab1.html)
 
 
-### Lab 2.1 - Visualización 
+<!-- PENDIENTE DE PUBLICAR: descomentar cada laboratorio a medida que avance el curso.
+
+### Lab 2.1 - Visualización
   - [Ejercicios](./labs/lab2.html)
-  
+
 
 ### Lab 2.2 - Transformación
   - [Ejercicios](./labs/lab3.html)
-  
+
 
 ### Lab 3.1 - Importación
   - [Ejercicios](./labs/lab4.html)
@@ -104,4 +108,6 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
 
 ### Lab 4 - Modelos
   - [Ejercicios](./labs/lab7.html)
+
+-->
 
