@@ -4,3 +4,7 @@
 
 # Guías docentes: no publicar en la web
 2026-27_G*.pdf
+
+# Solucionarios renderizados: nunca publicar
+labs/sol_*.html
+labs/solucion_*.html
