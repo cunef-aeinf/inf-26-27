@@ -30,7 +30,7 @@ library(nycflights13)
 
 En 2017, la plataforma Kaggle realizó una encuesta en toda la industria para establecer una visión integral del estado de la ciencia de datos y el aprendizaje automático. La encuesta recibió más de 16.000 respuestas y arrojó luz acerca de quién está trabajando con datos, qué está sucediendo en la vanguardia del aprendizaje automático en todos los sectores industriales y cómo los nuevos científicos de datos pueden entrar mejor en este campo.
 
-“La mayoría de nuestros encuestados se encontraron principalmente a través de los canales de Kaggle, como su lista de correo electrónico, foros de discusión y canales de redes sociales. La encuesta estuvo disponible del 7 al 25 de agosto. El tiempo medio de respuesta de quienes participaron en la encuesta fue de 16,4 minutos. Permitimos que los encuestados completaran la encuesta en cualquier momento durante ese período. Recibimos datos de salarios preguntando primero a los encuestados por su tipo de divisa y luego pidiéndoles que escribieran su compensación total”.
+“La mayoría de nuestros encuestados se encontraron principalmente a través de los canales de Kaggle, como su lista de correo electrónico, foros de discusión y canales de redes sociales. La encuesta estuvo disponible del 7 al 25 de agosto. El tiempo mediano de respuesta de quienes participaron en la encuesta fue de 16,4 minutos. Permitimos que los encuestados completaran la encuesta en cualquier momento durante ese período. Recibimos datos de salarios preguntando primero a los encuestados por su tipo de divisa y luego pidiéndoles que escribieran su compensación total”.
 
 Los datos proporcionados aquí son un subconjunto de los resultados de la encuesta de Kaggle, conservando únicamente las observaciones con respuestas completas para las variables seleccionadas.
 Más información aquí:
@@ -70,7 +70,7 @@ Para comparar salarios en distinta moneda, nos gustaría agregar a los datos de
 conversión a la divisa correspondiente. Esta columna se encuentra en el 
 dataset `kaggle_conversionRates.csv`.
 
-Escriba código que haga esto. Guarda el nuevo conjunto de datos usando el nombre
+Escribe código que haga esto. Guarda el nuevo conjunto de datos usando el nombre
 `datascience`.
 
 ### Solución
@@ -103,7 +103,7 @@ Recrea el siguiente gráfico.
 `fct_reorder`. Busca en internet su uso.
 
 **Pista**: para crear un gráfico de barras **bivariante**, especifica
-el eje x e y en aes y añade `geom_bar(stat="identity")`. Recuerda que puedes
+los ejes x e y en aes y añade `geom_bar(stat="identity")`. Recuerda que puedes
 invertir las coordenadas con `coord_flip()`.
 
 ### Solución
@@ -155,7 +155,7 @@ ggplot(data, aes(lon, lat)) +
 
 ## Ejercicio 9
 
-Elabora una visualización similar a la anterior donde muestres la distribución espacial del retraso medio de los vuelos del día 13 de Junio. Compara esta distribución con la de otro día, por ejemplo el 13 de Mayo. ¿Qué observas? Intenta determinar el origen del patrón (buscando en Google). Representa ambos mapas en el mismo gráfico para mayor claridad.
+Elabora una visualización similar a la anterior donde muestres la distribución espacial del retraso medio de los vuelos del día 13 de junio. Compara esta distribución con la de otro día, por ejemplo el 13 de mayo. ¿Qué observas? Intenta determinar el origen del patrón (buscando en Google). Representa ambos mapas en el mismo gráfico para mayor claridad.
 
 ### Solución
 

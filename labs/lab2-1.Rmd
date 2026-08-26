@@ -26,19 +26,18 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8)
 
 Utilizando los datos de la librería `gapminder`:
 
-* Filtra las obserevaciones correspondientes a los años 1957, 1967, 1977, 1987, 1997, 2007
+* Filtra las observaciones correspondientes a los años 1957, 1967, 1977, 1987, 1997, 2007
 
 * Representa la relación entre PIB per cápita y esperanza de vida por continentes y por años
 en diferentes gráficas usando **faceting**. El tamaño de los puntos ha de ser proporcional a la población.
 El color debe reflejar el continente. 
 
-* ¿Qué conlusiones extraes?
+* ¿Qué conclusiones extraes?
 
 ## Ejercicio 2
 
 La contaminación debida al consumo de plástico es un problema global que afecta negativamente a la salud de diversos ecosistemas.
 [Our World in Data](https://ourworldindata.org/plastic-pollution) contiene multitud de datos acerca de la evolución del consumo de plástico tanto a nivel global, como de país. Para este ejercicio nos centramos en los datos de 2010.
-
 
 Los datos se encuentran en la carpeta data del repositorio. Puedes cargarlos utilizando
 
@@ -54,10 +53,10 @@ Las variables son las siguientes
 - `continent`: Nombre del continente
 - `year`: Año
 - `gdp_per_cap`: PIB per cápita (2011) en dólares internacionales
-- `plastic_waste_per_cap`: Cantidad de residuos per capita de plástico en kg/día
+- `plastic_waste_per_cap`: Cantidad de residuos per cápita de plástico en kg/día
 - `mismanaged_plastic_waste_per_cap`: Cantidad de residuos de plástico mal gestionados en kg/día
 - `mismanaged_plastic_waste`: Toneladas de residuos de plástico mal gestionados
-- `coastal_pop`: Número de individuos que viven en o cerca de la cosa
+- `coastal_pop`: Número de individuos que viven en o cerca de la costa
 - `total_pop`: Población total
 
 Visualiza la distribución de la cantidad de residuos de plástico per cápita (en 2010).
@@ -69,7 +68,7 @@ Nota: Para el resto de ejercicios, filtra los datos atípicos si los hubiera.
 
 ## Ejercicio 3
 
-Visualiza la distribución de la cantidad de residuos de plástico per capita por continente, usando distintos histogramas para cada continente.
+Visualiza la distribución de la cantidad de residuos de plástico per cápita por continente, usando distintos histogramas para cada continente.
 
 
 ## Ejercicio 4
@@ -92,12 +91,12 @@ Elabora una visualización alternativa a la anterior que permita comparar la dis
 Investiga qué son las [gráficas violín](http://ggplot2.tidyverse.org/reference/geom_violin.html).
 Construye la gráfica de violín de los datos anteriores. ¿Qué revelan estas gráficas que un boxplot no revela?
 
-¿Observas algún patrón que distinga la distribución de la cantidad de residuos de plástico de continentes desarrolladas y en vías de desarrollo?
+¿Observas algún patrón que distinga la distribución de la cantidad de residuos de plástico de continentes desarrollados y en vías de desarrollo?
 
 
 ## Ejercicio 8
 
-Visualiza la relación entre cantidad de residuos de plástico per cápita y PIB per cápita. Pinta cada continente con un color y añade un **único smoothing** que muestre la tendencia global. Además, usa la escala de colores vidris (investiga en internet cómo utilizarla).
+Visualiza la relación entre cantidad de residuos de plástico per cápita y PIB per cápita. Pinta cada continente con un color y añade un **único smoothing** que muestre la tendencia global. Además, usa la escala de colores viridis (investiga en internet cómo utilizarla).
 ¿Cómo describirías esta relación? 
 
 

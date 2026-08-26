@@ -175,7 +175,7 @@ Si nuestra variable respuesta `y` es cualitativa y tenemos, por ejemplo, dos pre
 log_reg <- glm( y ~ x1 + x2, data = data, family = binomial(link='logit'))
 ```
 
-Vamos a utilizar una regresión logística para intentar predecir si los pasajeros del titanic sobrevivieron o no, utilizando como variables predictoras por ejemplo el sexo, la edad, la clase de su ticket, etc.
+Vamos a utilizar una regresión logística para intentar predecir si los pasajeros del Titanic sobrevivieron o no, utilizando como variables predictoras por ejemplo el sexo, la edad, la clase de su ticket, etc.
 
 Primero instala la librería `titanic` y carga los datos:
 
@@ -196,7 +196,7 @@ añade una variable id que indique el número de fila. Guarda esto en un nuevo d
 ## Ejercicio 12
 
 Crea dos conjuntos de datos llamados `train` y `test`.
-El primero, debe contener observaciones (filas) seleccionadas al azar del dataframe
+El primero debe contener observaciones (filas) seleccionadas al azar del dataframe
 titanic del ejercicio anterior. Su número de filas ha de ser el 70% del número de filas de titanic. El segundo conjunto de datos ha de contener todas las observaciones que están en el conjunto de datos titanic pero que no están en `train`.
 
 **Pista:** usa la función `sample_frac()`

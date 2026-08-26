@@ -1807,7 +1807,7 @@ tenemos, por ejemplo, dos predictores <code>x1</code> y <code>x2</code>,
 ajustamos una regresión logística como sigue:</p>
 <pre class="r"><code>log_reg &lt;- glm( y ~ x1 + x2, data = data, family = binomial(link=&#39;logit&#39;))</code></pre>
 <p>Vamos a utilizar una regresión logística para intentar predecir si
-los pasajeros del titanic sobrevivieron o no, utilizando como variables
+los pasajeros del Titanic sobrevivieron o no, utilizando como variables
 predictoras por ejemplo el sexo, la edad, la clase de su ticket,
 etc.</p>
 <p>Primero instala la librería <code>titanic</code> y carga los
@@ -1828,7 +1828,7 @@ significa cada variable.</p>
 <div id="ejercicio-12" class="section level2">
 <h2>Ejercicio 12</h2>
 <p>Crea dos conjuntos de datos llamados <code>train</code> y
-<code>test</code>. El primero, debe contener observaciones (filas)
+<code>test</code>. El primero debe contener observaciones (filas)
 seleccionadas al azar del dataframe titanic del ejercicio anterior. Su
 número de filas ha de ser el 70% del número de filas de titanic. El
 segundo conjunto de datos ha de contener todas las observaciones que

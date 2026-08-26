@@ -134,7 +134,7 @@ El resultado debe ser un vector que contenga los números 57, 36, 23 y 1.
 x1 <- "El paciente tiene 57 años"
 x2 <- "La edad de mi hermana es 36 años"
 x3 <- "A sus 23 años, tenía talla 36"
-x4 <- "Tan solo tiene 1 año!"
+x4 <- "¡Tan solo tiene 1 año!"
 
 datos <- c(x1,x2,x3,x4)
 ```

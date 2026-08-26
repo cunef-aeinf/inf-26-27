@@ -26,12 +26,13 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8)
 
 Utilizando los datos de la librería `gapminder`:
 
-* Filtra las obserevaciones correspondientes a los años 1957, 1967, 1977, 1987, 1997, 2007
+* Filtra las observaciones correspondientes a los años 1957, 1967, 1977, 1987, 1997, 2007
 
-* Representa la relación entre PIB per cápita y esperanza de vida por continentes y por años en diferentes gráficas usando **faceting**. El tamaño de los puntos ha de ser proporcional a la población.
+* Representa la relación entre PIB per cápita y esperanza de vida por continentes y por años
+en diferentes gráficas usando **faceting**. El tamaño de los puntos ha de ser proporcional a la población.
 El color debe reflejar el continente. 
 
-* ¿Qué conlusiones extraes?
+* ¿Qué conclusiones extraes?
 
 ### Solución
 
@@ -79,10 +80,10 @@ Las variables son las siguientes
 - `continent`: Nombre del continente
 - `year`: Año
 - `gdp_per_cap`: PIB per cápita (2011) en dólares internacionales
-- `plastic_waste_per_cap`: Cantidad de residuos per capita de plástico en kg/día
+- `plastic_waste_per_cap`: Cantidad de residuos per cápita de plástico en kg/día
 - `mismanaged_plastic_waste_per_cap`: Cantidad de residuos de plástico mal gestionados en kg/día
 - `mismanaged_plastic_waste`: Toneladas de residuos de plástico mal gestionados
-- `coastal_pop`: Número de individuos que viven en o cerca de la cosa
+- `coastal_pop`: Número de individuos que viven en o cerca de la costa
 - `total_pop`: Población total
 
 Visualiza la distribución de la cantidad de residuos de plástico per cápita (en 2010).
@@ -111,7 +112,7 @@ plastic <- plastic %>%
 
 ## Ejercicio 3
 
-Visualiza la distribución de la cantidad de residuos de plástico per capita por continente, usando distintos histogramas para cada continente.
+Visualiza la distribución de la cantidad de residuos de plástico per cápita por continente, usando distintos histogramas para cada continente.
 
 ### Solución
 
@@ -135,7 +136,7 @@ ggplot(data = plastic,
 
 ## Ejercicio 5
 
-Mejora la gráfica anterior pintando cada curva de un color y añadiendo transparencia.
+Mejora la gráfica anterior rellenando cada curva de un color y añadiendo transparencia.
 
 ### Solución
 
@@ -165,7 +166,7 @@ ggplot(data = plastic,
 Investiga qué son las [gráficas violín](http://ggplot2.tidyverse.org/reference/geom_violin.html).
 Construye la gráfica de violín de los datos anteriores. ¿Qué revelan estas gráficas que un boxplot no revela?
 
-¿Observas algún patrón que distinga la distribución de la cantidad de residuos de plástico de continentes desarrolladas y en vías de desarrollo?
+¿Observas algún patrón que distinga la distribución de la cantidad de residuos de plástico de continentes desarrollados y en vías de desarrollo?
 
 ### Solución
 
@@ -178,7 +179,7 @@ ggplot(data = plastic,
   geom_violin()
 ```
 
-En África, América Latina y Asia hay gran cantidad de países con pocos residuos y pocos con muchos residuos, mientras que en Europa, norteamérica y Oceanía la distribución es más homogénea.
+En África, América Latina y Asia hay gran cantidad de países con pocos residuos y pocos con muchos residuos, mientras que en Europa, Norteamérica y Oceanía la distribución es más homogénea.
 
 
 ## Ejercicio 8
@@ -222,7 +223,8 @@ plastic_europa[plastic_europa$gdp_per_cap > 40000 & plastic_europa$plastic_waste
 ## Ejercicio 10
 
 Visualiza la relación entre los residuos de plástico per cápita y los residuos mal gestionados per cápita.
-Pinta cada continente de un color. ¿Cambia la asociación de estas dos variables entre continentes?
+Pinta cada continente de un color.
+¿Cambia la asociación de estas dos variables entre continentes?
 
 
 ### Solución

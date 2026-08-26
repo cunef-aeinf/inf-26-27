@@ -90,7 +90,7 @@ ipc %>% arrange(MEDCPIM158SFRBCLE) %>% slice(1)
 
 Our World in Data es una iniciativa de la Universidad de Oxford que pretende liberar datos acerca de múltiples fenómenos sociales. En particular ofrece resultados empíricos acerca del cambio de condiciones de vida en el planeta a lo largo del tiempo. Los datos son de diversos ámbitos: económico, social, judicial, ecológico, etc.
 
-¿Cuántas veces has escuchado, en la cena de nochevieja, a un familiar decir: "en mis tiempos se vivía mejor, ¡no había tanto paro!"? Bien, en esta práctica haremos uso de Our World in Data junto con R para que puedas rebatir esos comentarios con datos empíricos. 
+¿Cuántas veces has escuchado, en la cena de Nochevieja, a un familiar decir: "en mis tiempos se vivía mejor, ¡no había tanto paro!"? Bien, en esta práctica haremos uso de Our World in Data junto con R para que puedas rebatir esos comentarios con datos empíricos. 
 
 Lo primero que has de hacer es acceder a la página [https://ourworldindata.org/](https://ourworldindata.org/). Verás una pestaña que dice "Browse by Topic". Busca en esa pestaña un tópico de interés.
 Al seleccionarlo, llegarás a un artículo que, seguramente, contendrá alguna gráfica. En el gráfico aparecerá una pestaña Download, púlsala y descarga los datos en csv.

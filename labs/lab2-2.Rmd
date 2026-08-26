@@ -22,7 +22,7 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8)
 ```
 
 
-En este laboratorio trabajaremos con datos procedentes de una encuesta sobre los hábitos de los fumadores en el Reino Unido. Los datos poceden del National STEM Centre, Large Datasets from stats4schools, [https://www.stem.org.uk/resources/elibrary/resource/28452/large-datasets-stats4schools](https://www.stem.org.uk/resources/elibrary/resource/28452/large-datasets-stats4schools).
+En este laboratorio trabajaremos con datos procedentes de una encuesta sobre los hábitos de los fumadores en el Reino Unido. Los datos proceden del National STEM Centre, Large Datasets from stats4schools, [https://www.stem.org.uk/resources/elibrary/resource/28452/large-datasets-stats4schools](https://www.stem.org.uk/resources/elibrary/resource/28452/large-datasets-stats4schools).
 
 Los datos se encuentran en la carpeta data del repositorio. Puedes cargarlos utilizando
 
@@ -30,7 +30,7 @@ Los datos se encuentran en la carpeta data del repositorio. Puedes cargarlos uti
 library(tidyverse)
 fumar <- read_csv("data/smoking.csv")
 ```
-La variables recogidas son (entre paréntesis aparecen los niveles que toman):
+Las variables recogidas son (entre paréntesis aparecen los niveles que toman):
 
 * `gender`: Género
 
@@ -46,7 +46,7 @@ La variables recogidas son (entre paréntesis aparecen los niveles que toman):
 
 * `gross_income`: Salario bruto (Under 2,600, 2,600 to 5,200, 5,200 to 10,400, 10,400 to 15,600, 15,600 to 20,800, 20,800 to 28,600, 28,600 to 36,400, Above 36,400, Refused y Unknown)
 
-* `region`: Region (London, Midlands & East Anglia, Scotland, South East, South West, The North y Wales)
+* `region`: Región (London, Midlands & East Anglia, Scotland, South East, South West, The North y Wales)
 
 * `smoke` : Fumador (No y Yes)
 
@@ -54,7 +54,7 @@ La variables recogidas son (entre paréntesis aparecen los niveles que toman):
 
 * `amt_weekdays`:  Número de cigarros diarios entre semana
 
-* `type`: Tipo de cigarrilos (Packets, Hand-Rolled, Both/Mainly Packets y Both/Mainly Hand-Rolled)
+* `type`: Tipo de cigarrillos (Packets, Hand-Rolled, Both/Mainly Packets y Both/Mainly Hand-Rolled)
 
 
 
@@ -65,7 +65,7 @@ La variables recogidas son (entre paréntesis aparecen los niveles que toman):
 
 ## Ejercicio 2
 
-Selecciona la variable `amt_weekends`, ordenala de forma decreciente y muestra los primeros 10 valores.
+Selecciona la variable `amt_weekends`, ordénala de forma decreciente y muestra los primeros 10 valores.
 Haz lo mismo con  `amt_weekdays`, ¿qué observas?
 
 
@@ -91,7 +91,7 @@ Muestra las 10 últimas filas del dataset.
 
 ## Ejercicio 6
 
-Calcula media, mediana, y desviación estándar de cigarrillos/dia en fin de semana y entre semana por grupos de edad menor o igual a 20, 20-30, ..., >90. 
+Calcula media, mediana, y desviación estándar de cigarrillos/día en fin de semana y entre semana por grupos de edad menor o igual a 20, 20-30, ..., >90. 
 Resume las conclusiones de los resultados observados.
 
 *Nota*: Crea una nueva variable llamada `decada` utilizando la función `case_when`.
@@ -154,16 +154,16 @@ fumar %>% group_by(gender, smoke) %>% summarise(n=n()) %>%
 
 ## Ejercicio 12
 
-En numerosas ocasiones, ante la presencia de valores ausentes, es útil substituírlos
+En numerosas ocasiones, ante la presencia de valores ausentes, es útil sustituirlos
 por un valor. A este proceso se le conoce como imputación.
 Una de las técnicas más comunes de imputación de variables categóricas, consiste
-en substituír los valores ausentes por el valor más probable en cierto 
+en sustituir los valores ausentes por el valor más probable en cierto 
 segmento de la población (la moda).
 
-Por ejemplo, podemos sustituír los valores desconocidos o no declarados de la variable `ethnicity`
+Por ejemplo, podemos sustituir los valores desconocidos o no declarados de la variable `ethnicity`
 por la etnia más frecuente en los datos, y asumir que el porcentaje de error será pequeño.
-Una estrategia quizás más inteligente es sustituír los valores desconocidos o no declarados de la variable `ethnicity` por la etnia más prevalente en la nación correspondiente. En este ejercicio,
-has de realizar esto último. Para ello, ayudate de la siguiente función
+Una estrategia quizás más inteligente es sustituir los valores desconocidos o no declarados de la variable `ethnicity` por la etnia más prevalente en la nación correspondiente. En este ejercicio,
+has de realizar esto último. Para ello, ayúdate de la siguiente función
 para el cálculo de la moda.
 
 ```{r}
