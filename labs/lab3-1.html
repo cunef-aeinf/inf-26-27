@@ -11,7 +11,7 @@
 
 
 
-<title>Lab 3.3 - Strings, factores y fechas</title>
+<title>Lab 3.1 - Importación de datos</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1640,7 +1640,7 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">Lab 3.3 - Strings, factores y fechas</h1>
+<h1 class="title toc-ignore">Lab 3.1 - Importación de datos</h1>
 
 </div>
 
@@ -1648,145 +1648,117 @@ border-radius: 0px;
 <div class="title-logo">
 
 </div>
-<pre class="r"><code>library(tidyverse)
-library(nycflights13)
-library(lubridate)
-library(tidyquant)</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
 <div id="ejercicio-1" class="section level2">
 <h2>Ejercicio 1</h2>
-<p>En la base de datos <code>flights</code> las variables
-<code>dep_time</code>, <code>arr_time</code>,
-<code>sched_dep_time</code> y <code>sched_arr_time</code> contienen las
-horas en formato de tres o cuatro dígitos. Así, 830 son las 8 y media de
-la mañana y 2030 las ocho y media de la tarde. Una posibilidad para
-extraer la hora y los minutos de estas horas es la siguiente:</p>
-<pre class="r"><code>time &lt;- 2030
-hora &lt;- time%/%100
-minutos &lt;- time%%100
-print(hora)</code></pre>
-<pre><code>## [1] 20</code></pre>
-<pre class="r"><code>print(minutos)</code></pre>
-<pre><code>## [1] 30</code></pre>
-<p>Entiende y describe el funcionamiento de estas líneas de código. Crea
-un dataframe llamado <code>flights_dt</code> en el que las variables
-<code>dep_time</code>, <code>arr_time</code>,
-<code>sched_dep_time</code> y <code>sched_arr_time</code> contengan las
-fechas exactas a las que se refieren en formato
-<code>datetime</code>.</p>
-<div id="solución" class="section level3">
-<h3>Solución</h3>
-</div>
+<p>Simula la lectura de un conjunto de datos escritos en csv que
+contenga cuatro variables: nombre, edad, género y fumador (con valores
+posibles si/no), y dos observaciones la tuya y la de un amigo/a. Incluye
+una línea de metadatos al principio con un comentario que describa los
+datos. Por ejemplo:</p>
+<pre class="r"><code>datos &lt;- &quot;# Datos de Ana y Pedro
+nombre,edad,genero,fuma
+Pedro,29,hombre,no
+Ana,26,mujer,si&quot;</code></pre>
+<p>Lee los datos en un tibble. A continuación, guárdalos en formato csv
+dentro de una carpeta que se llame <code>data</code>. Una vez guardados,
+vuelve a leerlos (esta vez desde el fichero). Finalmente, guárdalos de
+nuevo en formato excel.</p>
 </div>
 <div id="ejercicio-2" class="section level2">
 <h2>Ejercicio 2</h2>
-<p>Visualiza la distribución de vuelos según el <strong>día de la
-semana</strong> en el que despegan. ¿Qué conclusión extraes?</p>
-<div id="solución-1" class="section level3">
-<h3>Solución</h3>
-</div>
+<p>Federal Reserve Economic Data (FRED) es una base de datos mantenida
+por la Reserva Federal de St. Louis (USA). Contiene casi un millón de
+series de datos en el tiempo que muestran la evolución de diferentes
+medidas económicas.</p>
+<p>Accede a la web de FRED <a href="https://fred.stlouisfed.org/">https://fred.stlouisfed.org/</a>.
+Exporta los datos sobre la evolución del IPC Mediano en csv (en inglés
+Median Consumer Price Index). Cárgalos en R y haz lo siguiente:</p>
+<ul>
+<li><p>Representa gráficamente la evolución del IPC Mediano desde el año
+2000.</p></li>
+<li><p>¿En qué fecha se alcanzó el máximo IPC Mediano? ¿Y el
+mínimo?</p></li>
+</ul>
 </div>
 <div id="ejercicio-3" class="section level2">
 <h2>Ejercicio 3</h2>
-<p>Visualiza la distribución de vuelos según el <strong>minuto</strong>
-en el que despegan y según el <strong>minuto</strong> de la hora
-prevista para el despegue. ¿Qué patrón aparece? ¿Cómo lo
-explicarías?</p>
-<div id="solución-2" class="section level3">
-<h3>Solución</h3>
-</div>
+<p>Our World in Data es una iniciativa de la Universidad de Oxford que
+pretende liberar datos acerca de múltiples fenómenos sociales. En
+particular ofrece resultados empíricos acerca del cambio de condiciones
+de vida en el planeta a lo largo del tiempo. Los datos son de diversos
+ámbitos: económico, social, judicial, ecológico, etc.</p>
+<p>¿Cuántas veces has escuchado, en la cena de nochevieja, a un familiar
+decir: “en mis tiempos se vivía mejor, ¡no había tanto paro!”? Bien, en
+esta práctica haremos uso de Our World in Data junto con R para que
+puedas rebatir esos comentarios con datos empíricos.</p>
+<p>Lo primero que has de hacer es acceder a la página <a href="https://ourworldindata.org/">https://ourworldindata.org/</a>.
+Verás una pestaña que dice “Browse by Topic”. Busca en esa pestaña un
+tópico de interés. Al seleccionarlo, llegarás a un artículo que,
+seguramente, contendrá alguna gráfica. En el gráfico aparecerá una
+pestaña Download, púlsala y descarga los datos en csv.</p>
+<p>Una vez descargados, cárgalos en R e intenta reproducir el gráfico
+que aparece en el artículo.</p>
+<p>Aquí os pongo un ejemplo con datos sobre la evolución del precio del
+gas en diferentes regiones. La gráfica es esta: <a href="https://ourworldindata.org/grapher/natural-gas-prices">https://ourworldindata.org/grapher/natural-gas-prices</a>.</p>
 </div>
 <div id="ejercicio-4" class="section level2">
 <h2>Ejercicio 4</h2>
-<p>Crea una nueva variable que corresponda a la diferencia entre
-<code>arr_time</code> y <code>dep_time</code>. Visualiza la covariación
-entre esta variable y <code>air_time</code>. ¿Qué observas? ¿Qué está
-sucediendo?</p>
-<div id="solución-3" class="section level3">
-<h3>Solución</h3>
-</div>
+<p>Busca en FRED algún dato de tu interés. Descárgalo en
+<strong>excel</strong>, impórtalo en R, construye una gráfica y extrae
+alguna conclusión.</p>
 </div>
 <div id="ejercicio-5" class="section level2">
 <h2>Ejercicio 5</h2>
-<p>Repite la visualización anterior, pero usando un color diferente para
-cada zona horaria del aeropuerto de destino. ¿Qué observas?</p>
-<p><strong>Pista</strong>: la zona horaria de los diferentes aeropuertos
-está en la base de datos <code>airports</code> y se llama
-<code>tzone</code>.</p>
-<div id="solución-4" class="section level3">
-<h3>Solución</h3>
-</div>
+<p>Parsea cada una de estas fechas/horas</p>
+<pre class="r"><code>d1 &lt;- &quot;January 01, 2010&quot;
+d2 &lt;- &quot;2015-Mar-07&quot;
+d3 &lt;- &quot;06-Jun-2017&quot;
+d4 &lt;- c(&quot;August 19 (2015)&quot;, &quot;July 1 (2015)&quot;)
+d5 &lt;- &quot;12/30/14&quot; # Dec 30, 2014
+t1 &lt;- &quot;1705&quot;
+t2 &lt;- &quot;11:15:10.12 PM&quot;</code></pre>
 </div>
 <div id="ejercicio-6" class="section level2">
 <h2>Ejercicio 6</h2>
-<p>La librería <code>tidyquant</code> se puede utilizar para importar a
-R infinidad de datos económicos. En particular, se puede usar para
-importar datos sobre el precio de diferentes acciones.</p>
-<p>Extraer el histórico de precios de AMZN desde el año 2000 es muy
-sencillo:</p>
-<pre class="r"><code>prices  &lt;- tq_get(&quot;AMZN&quot;, get = &quot;stock.prices&quot;, from = &quot; 2000-01-01&quot;)
-prices </code></pre>
-<pre><code>## # A tibble: 6,701 × 8
-##    symbol date        open  high   low close    volume adjusted
-##    &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-##  1 AMZN   2000-01-03  4.07  4.48  3.95  4.47 322352000     4.47
-##  2 AMZN   2000-01-04  4.27  4.57  4.09  4.10 349748000     4.10
-##  3 AMZN   2000-01-05  3.53  3.76  3.40  3.49 769148000     3.49
-##  4 AMZN   2000-01-06  3.57  3.63  3.20  3.28 375040000     3.28
-##  5 AMZN   2000-01-07  3.35  3.53  3.31  3.48 210108000     3.48
-##  6 AMZN   2000-01-10  3.63  3.63  3.28  3.46 295158000     3.46
-##  7 AMZN   2000-01-11  3.34  3.5   3.25  3.34 210654000     3.34
-##  8 AMZN   2000-01-12  3.39  3.40  3.15  3.18 216090000     3.18
-##  9 AMZN   2000-01-13  3.25  3.36  3.16  3.30 208962000     3.30
-## 10 AMZN   2000-01-14  3.34  3.43  3.20  3.21 137072000     3.21
-## # ℹ 6,691 more rows</code></pre>
-<p>Crea una visualización que permita estudiar la variación del precio
-de apertura de la acción de AMZN en el tiempo. ¿En qué fechas se
-alcanzan precios de apertura máximos y mínimos?</p>
-<p>Al inicio de la pandemia, a causa de la cuarentena obligatoria
-establecida por numerosos países, las expectativas del mercado sobre
-Amazon se dispararon. Imagina que hubieses comprado acciones de Amazon
-el día 2 de marzo de 2020 por un valor de 5000 euros. Calcula las
-ganancias netas obtenidas si hubieses vendido esas acciones un año
-después. (Utiliza los precios de apertura).</p>
-<div id="solución-5" class="section level3">
-<h3>Solución</h3>
-</div>
+<p>Elabora un código que haga lo siguiente:</p>
+<ul>
+<li><p>Compruebe si existe una carpeta llamada “datos_paro”, si no
+existe, ha de crearla.</p></li>
+<li><p>Descargue los datos de desempleo de España de FRED (en FRED estos
+datos se denominan: “Unemployment Rate: Aged 15-74: All Persons for
+Spain”) y los guarde en la carpeta “datos_paro”.</p></li>
+<li><p>Lea los datos recién descargados.</p></li>
+<li><p>Si la tasa de desempleo más reciente es inferior a 10 % imprima
+el mensaje <code>&quot;La tasa de desempleo ha bajado del 10%&quot;</code>, de lo
+contrario, se imprimirá
+<code>&quot;La tasa de desempleo se mantiene por encima del 10%&quot;</code></p></li>
+</ul>
 </div>
 <div id="ejercicio-7" class="section level2">
 <h2>Ejercicio 7</h2>
-<p>Al usar expresiones regulares, el signo <code>+</code> indica
-repetición. Así, si queremos detectar un patrón que se repite un número
-indefinido de veces, por ejemplo, detectar todas las C en CCCCCCCMMD, lo
-haremos como sigue.</p>
-<pre class="r"><code>str_view(&quot;CCCCCCCMMD&quot;, pattern = &quot;C+&quot;)</code></pre>
-<pre><code>## [1] │ &lt;CCCCCCC&gt;MMD</code></pre>
-<p>Además, la función <code>str_extract</code> permite extraer los
-patrones detectados. Por ejemplo</p>
-<pre class="r"><code>str_extract(&quot;CCCCCCCMMD&quot;, pattern = &quot;C+&quot;)</code></pre>
-<pre><code>## [1] &quot;CCCCCCC&quot;</code></pre>
-<p>Usando expresiones regulares, extrae las edades de las siguientes
-frases. El resultado debe ser un vector que contenga los números 57, 36,
-23 y 1.</p>
-<pre class="r"><code>x1 &lt;- &quot;El paciente tiene 57 años&quot;
-x2 &lt;- &quot;La edad de mi hermana es 36 años&quot;
-x3 &lt;- &quot;A sus 23 años, tenía talla 36&quot;
-x4 &lt;- &quot;Tan solo tiene 1 año!&quot;
-
-datos &lt;- c(x1,x2,x3,x4)</code></pre>
-<div id="solución-6" class="section level3">
-<h3>Solución</h3>
-</div>
-</div>
-<div id="ejercicio-8" class="section level2">
-<h2>Ejercicio 8</h2>
-<p>Usando los datos <code>gss_cat</code> de tidyverse, visualiza la
-distribución de la variable <code>rincome</code>. Para mejorar la
-visualización, recodifica los niveles de esta variable para que sean
-<code>Unknown</code>, <code>&lt;$15000</code> y
-<code>&gt;$15000</code>.</p>
-<div id="solución-7" class="section level3">
-<h3>Solución</h3>
-</div>
+<p>Weyland Yutani Manufacturing quiere realizar un análisis de costes.
+Para ello, se te proporciona un informe en Excel con los costes por
+región.</p>
+<ol style="list-style-type: decimal">
+<li><p>Lee el archivo Excel
+<strong>weyland_cost_results.xlsx</strong>.</p></li>
+<li><p>Notarás que la tabla tiene muchos valores NA y filas
+innecesarias, necesitamos hacer una limpieza:</p>
+<ul>
+<li><p>Existen filas que muestran subtotales de cada <code>region</code>
+(por ejemplo, “Central Total” o “East Total”) y de toda la compañía
+(“Grand Total”). Filtra el data frame para que no tenga estas filas de
+subtotales. Las filas con valores NA deben permanecer después de este
+filtrado. <em>Sugerencia:</em> Puedes utilizar la función
+<code>endsWith()</code> para filtrar estos datos.</p></li>
+<li><p>Ahora necesitamos llenar los valores NA. Ten en cuenta que la
+<code>region</code> es la misma que la fila anterior, por lo que
+necesitarás completar con el mismo valor que la fila superior de la fila
+en la que te encuentras. Investiga el uso de <code>fill</code> para este
+propósito.</p></li>
+</ul></li>
+</ol>
 </div>
 
 

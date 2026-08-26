@@ -63,14 +63,6 @@ flights_dt <- flights %>% mutate(dep_time = make_datetime(year, month, day,
 ```
 
 
-```{r}
-flights_dt %>% mutate(difference = as.numeric(arr_time-dep_time)) %>% 
-  mutate(actual_arr_time = if_else(as.numeric(difference) < 0 , arr_time + days(1), arr_time)) %>% 
-  mutate(difference = actual_arr_time-dep_time ) %>% 
-  ggplot(aes(x=difference, y=air_time)) + geom_point()
-```
-
-
 ## Ejercicio 2
 
 Visualiza la distribución de vuelos según el **día de la semana** en el que despegan.
@@ -115,6 +107,13 @@ Visualiza la covariación entre esta variable y `air_time`.
 ```{r}
 flights_dt %>% mutate(diff_time = arr_time - dep_time) %>% 
   ggplot(aes(x=diff_time, air_time)) + geom_point()
+```
+
+```{r}
+flights_dt %>% mutate(difference = as.numeric(arr_time-dep_time)) %>% 
+  mutate(actual_arr_time = if_else(as.numeric(difference) < 0 , arr_time + days(1), arr_time)) %>% 
+  mutate(difference = actual_arr_time-dep_time ) %>% 
+  ggplot(aes(x=difference, y=air_time)) + geom_point()
 ```
 
 
@@ -202,14 +201,13 @@ x4 <- "Tan solo tiene 1 año!"
 datos <- c(x1,x2,x3,x4)
 ```
 
+### Solución
+
 ```{r}
 tmp <- str_extract_all(datos, pattern = "\\d+.año.")
 tmp <- as.character(tmp)
 as.numeric(str_extract_all(tmp, pattern = "\\d+"))
 ```
-
-
-### Solución
 
 ## Ejercicio 8
 Usando los datos `gss_cat` de tidyverse, visualiza la distribución de la variable `rincome`.
@@ -239,7 +237,7 @@ Crea una nueva variable llamada `n_loves` que corresponda al número de veces qu
 
 ### Solución
 
-```{r, echo=F, eval=F, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 amz <- read_csv("data/amazon_reviews.csv")
 amz %>% mutate(n_loves = str_count(review, pattern="[Ll]ove.")) %>% 
   group_by(rate) %>% summarise(mean(n_loves))

@@ -11,7 +11,7 @@
 
 
 
-<title>Lab 3.1 - Importación de datos</title>
+<title>Lab 4 - Modelos</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1640,7 +1640,7 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">Lab 3.1 - Importación de datos</h1>
+<h1 class="title toc-ignore">Lab 4 - Modelos</h1>
 
 </div>
 
@@ -1648,117 +1648,230 @@ border-radius: 0px;
 <div class="title-logo">
 
 </div>
-<pre class="r"><code>library(tidyverse)</code></pre>
+<pre class="r"><code>library(tidyverse)
+library(modelr)</code></pre>
 <div id="ejercicio-1" class="section level2">
 <h2>Ejercicio 1</h2>
-<p>Simula la lectura de un conjunto de datos escritos en csv que
-contenga cuatro variables: nombre, edad, género y fumador (con valores
-posibles si/no), y dos observaciones la tuya y la de un amigo/a. Incluye
-una línea de metadatos al principio con un comentario que describa los
-datos. Por ejemplo:</p>
-<pre class="r"><code>datos &lt;- &quot;# Datos de Ana y Pedro
-nombre,edad,genero,fuma
-Pedro,29,hombre,no
-Ana,26,mujer,si&quot;</code></pre>
-<p>Lee los datos en un tibble. A continuación, guárdalos en formato csv
-dentro de una carpeta que se llame <code>data</code>. Una vez guardados,
-vuelve a leerlos (esta vez desde el fichero). Finalmente, guárdalos de
-nuevo en formato excel.</p>
+<p>Utilizando la base de datos <code>diamonds</code>, visualiza la
+relación entre los siguientes pares de variables:</p>
+<ul>
+<li><code>cut</code> y <code>price</code></li>
+<li><code>color</code> y <code>price</code></li>
+<li><code>clarity</code> y <code>price</code></li>
+</ul>
+<p>¿Encuentras un patrón atípico?</p>
+<p><strong>Pista</strong>: el color de menor calidad para un diamante es
+J (ligeramente amarillo), la peor claridad es I1 y el peor corte es
+Fair.</p>
+<div id="solución" class="section level3">
+<h3>Solución</h3>
+</div>
 </div>
 <div id="ejercicio-2" class="section level2">
 <h2>Ejercicio 2</h2>
-<p>Federal Reserve Economic Data (FRED) es una base de datos mantenida
-por la Reserva Federal de St. Louis (USA). Contiene casi un millón de
-series de datos en el tiempo que muestran la evolución de diferentes
-medidas económicas.</p>
-<p>Accede a la web de FRED <a href="https://fred.stlouisfed.org/">https://fred.stlouisfed.org/</a>.
-Exporta los datos sobre la evolución del IPC Mediano en csv (en inglés
-Median Consumer Price Index). Cárgalos en R y haz lo siguiente:</p>
-<ul>
-<li><p>Representa gráficamente la evolución del IPC Mediano desde el año
-2000.</p></li>
-<li><p>¿En qué fecha se alcanzó el máximo IPC Mediano? ¿Y el
-mínimo?</p></li>
-</ul>
+<p>Ajusta un modelo lineal donde la variable predictora sea
+<code>carat</code> (el peso de los diamantes) y la variable dependiente
+sea <code>price</code>. Obtén el valor de los coeficientes e
+interprétalos. ¿Qué conclusión extraes?</p>
+<div id="solución-1" class="section level3">
+<h3>Solución</h3>
+</div>
 </div>
 <div id="ejercicio-3" class="section level2">
 <h2>Ejercicio 3</h2>
-<p>Our World in Data es una iniciativa de la Universidad de Oxford que
-pretende liberar datos acerca de múltiples fenómenos sociales. En
-particular ofrece resultados empíricos acerca del cambio de condiciones
-de vida en el planeta a lo largo del tiempo. Los datos son de diversos
-ámbitos: económico, social, judicial, ecológico, etc.</p>
-<p>¿Cuántas veces has escuchado, en la cena de nochevieja, a un familiar
-decir: “en mis tiempos se vivía mejor, ¡no había tanto paro!”? Bien, en
-esta práctica haremos uso de Our World in Data junto con R para que
-puedas rebatir esos comentarios con datos empíricos.</p>
-<p>Lo primero que has de hacer es acceder a la página <a href="https://ourworldindata.org/">https://ourworldindata.org/</a>.
-Verás una pestaña que dice “Browse by Topic”. Busca en esa pestaña un
-tópico de interés. Al seleccionarlo, llegarás a un artículo que,
-seguramente, contendrá alguna gráfica. En el gráfico aparecerá una
-pestaña Download, púlsala y descarga los datos en csv.</p>
-<p>Una vez descargados, cárgalos en R e intenta reproducir el gráfico
-que aparece en el artículo.</p>
-<p>Aquí os pongo un ejemplo con datos sobre la evolución del precio del
-gas en diferentes regiones. La gráfica es esta: <a href="https://ourworldindata.org/grapher/natural-gas-prices">https://ourworldindata.org/grapher/natural-gas-prices</a>.</p>
+<p>Visualiza las predicciones del modelo anterior, así como los
+residuos. Extrae conclusiones.</p>
+<div id="solución-2" class="section level3">
+<h3>Solución</h3>
+</div>
 </div>
 <div id="ejercicio-4" class="section level2">
 <h2>Ejercicio 4</h2>
-<p>Busca en FRED algún dato de tu interés. Descárgalo en
-<strong>excel</strong>, impórtalo en R, construye una gráfica y extrae
-alguna conclusión.</p>
+<p>Crea un nuevo conjunto de datos llamado <code>diamonds2</code> donde
+elimines todos los diamantes de carat mayor que 2.5. Añade dos variables
+a este conjunto de datos llamadas <code>lcarat</code> y
+<code>lprice</code> que correspondan respectivamente a logaritmo en base
+dos de <code>carat</code> y <code>price</code>.</p>
+<div id="solución-3" class="section level3">
+<h3>Solución</h3>
+</div>
 </div>
 <div id="ejercicio-5" class="section level2">
 <h2>Ejercicio 5</h2>
-<p>Parsea cada una de estas fechas/horas</p>
-<pre class="r"><code>d1 &lt;- &quot;January 01, 2010&quot;
-d2 &lt;- &quot;2015-Mar-07&quot;
-d3 &lt;- &quot;06-Jun-2017&quot;
-d4 &lt;- c(&quot;August 19 (2015)&quot;, &quot;July 1 (2015)&quot;)
-d5 &lt;- &quot;12/30/14&quot; # Dec 30, 2014
-t1 &lt;- &quot;1705&quot;
-t2 &lt;- &quot;11:15:10.12 PM&quot;</code></pre>
+<p>Utilizando los datos creados en el ejercicio anterior, ajusta un
+modelo lineal donde la variable predictora sea <code>lcarat</code> y la
+variable dependiente sea <code>lprice</code>. Obtén el valor de los
+coeficientes e interprétalos. Según este modelo, ¿qué le sucede al
+precio de un diamante si multiplico por dos su <code>carat</code>?</p>
+<div id="solución-4" class="section level3">
+<h3>Solución</h3>
+</div>
 </div>
 <div id="ejercicio-6" class="section level2">
 <h2>Ejercicio 6</h2>
-<p>Elabora un código que haga lo siguiente:</p>
-<ul>
-<li><p>Compruebe si existe una carpeta llamada “datos_paro”, si no
-existe, ha de crearla.</p></li>
-<li><p>Descargue los datos de desempleo de España de FRED (en FRED estos
-datos se denominan: “Unemployment Rate: Aged 15-74: All Persons for
-Spain”) y los guarde en la carpeta “datos_paro”.</p></li>
-<li><p>Lea los datos recién descargados.</p></li>
-<li><p>Si la tasa de desempleo más reciente es inferior a 10 % imprima
-el mensaje <code>&quot;La tasa de desempleo ha bajado del 10%&quot;</code>, de lo
-contrario, se imprimirá
-<code>&quot;La tasa de desempleo se mantiene por encima del 10%&quot;</code></p></li>
-</ul>
+<p>Visualiza las predicciones del modelo anterior, así como los
+residuos. Extrae conclusiones. ¿Se ajusta este modelo mejor que el
+anterior a los datos?</p>
+<div id="solución-5" class="section level3">
+<h3>Solución</h3>
+</div>
 </div>
 <div id="ejercicio-7" class="section level2">
 <h2>Ejercicio 7</h2>
-<p>Weyland Yutani Manufacturing quiere realizar un análisis de costes.
-Para ello, se te proporciona un informe en Excel con los costes por
-región.</p>
-<ol style="list-style-type: decimal">
-<li><p>Lee el archivo Excel
-<strong>weyland_cost_results.xlsx</strong>.</p></li>
-<li><p>Notarás que la tabla tiene muchos valores NA y filas
-innecesarias, necesitamos hacer una limpieza:</p>
-<ul>
-<li><p>Existen filas que muestran subtotales de cada <code>region</code>
-(por ejemplo, “Central Total” o “East Total”) y de toda la compañía
-(“Grand Total”). Filtra el data frame para que no tenga estas filas de
-subtotales. Las filas con valores NA deben permanecer después de este
-filtrado. <em>Sugerencia:</em> Puedes utilizar la función
-<code>endsWith()</code> para filtrar estos datos.</p></li>
-<li><p>Ahora necesitamos llenar los valores NA. Ten en cuenta que la
-<code>region</code> es la misma que la fila anterior, por lo que
-necesitarás completar con el mismo valor que la fila superior de la fila
-en la que te encuentras. Investiga el uso de <code>fill</code> para este
-propósito.</p></li>
-</ul></li>
-</ol>
+<p>Utilizando la base de datos <code>diamonds2</code>, visualiza la
+relación entre las siguientes variables y el residuo calculado en el
+ejercicio anterior. * <code>cut</code> * <code>color</code> *
+<code>clarity</code></p>
+<p>¿Qué conclusión extraes?</p>
+<div id="solución-6" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-8" class="section level2">
+<h2>Ejercicio 8</h2>
+<p>Explora los datos <code>sim3</code> de <code>modelr</code>. ¿De qué
+tipo son las variables <code>x1</code> y <code>x2</code>? ¿Y la
+<code>y</code>? Ajusta un modelo lineal con variable respuesta
+<code>y</code> y predictores <code>x1</code> y <code>x2</code> y
+visualiza sus predicciones.</p>
+<p>Interpreta los coeficientes de este modelo.</p>
+<div id="solución-7" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-9" class="section level2">
+<h2>Ejercicio 9</h2>
+<p>Con los datos anteriores, ajusta el siguiente modelo</p>
+<p><span class="math display">\[
+y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{12} x_1 x_2
+\]</span></p>
+<p>en R este modelo se corresponde con la fórmula
+<code>y ~ x1 * x2</code>. Visualiza las predicciones del modelo, e
+interpreta sus coeficientes.</p>
+<div id="solución-8" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-10" class="section level2">
+<h2>Ejercicio 10</h2>
+<p>Para este ejercicio necesitas cargar la librería
+<code>infer</code></p>
+<pre class="r"><code>library(infer)</code></pre>
+<div id="datos" class="section level3">
+<h3>Datos</h3>
+<p>La Encuesta Social General (GSS) recopila datos sobre la sociedad
+estadounidense contemporánea con el fin de comprender y explicar las
+tendencias y constantes en actitudes, comportamientos y atributos. Se
+han monitorizado cientos de tendencias desde 1972.</p>
+<p>La GSS contiene un núcleo estándar de preguntas demográficas, de
+comportamiento y sobre actitudes, además de temas de interés especial.
+Entre los temas tratados se encuentran las libertades civiles, el crimen
+y la violencia, la tolerancia entre grupos, la moralidad, las
+prioridades nacionales de gasto, el bienestar psicológico, la movilidad
+social y el estrés y los eventos traumáticos.</p>
+<p>Analizaremos datos de la GSS de 2018 para entender cuánto tiempo
+pasan los adultos estadounidenses en el correo electrónico.</p>
+<pre class="r"><code>gss_email &lt;- read_csv(&quot;data/gss_email_2018.csv&quot;)</code></pre>
+<p>Utilizaremos la variable <code>email</code>: el número de minutos que
+los encuestados pasan en el correo electrónico semanalmente.</p>
+<p>El objetivo de este ejercicio es calcular el intervalo de confianza
+del 95% para el tiempo medio que los americanos gastan en el correo.</p>
+</div>
+<div id="section" class="section level3">
+<h3>10.1</h3>
+<p>Fija una semilla para controlar el proceso aleatorio.</p>
+</div>
+<div id="section-1" class="section level3">
+<h3>10.2</h3>
+<p>Calcula la distribución bootstrap</p>
+</div>
+<div id="section-2" class="section level3">
+<h3>10.3</h3>
+<p>Calcula y visualiza el IC</p>
+</div>
+<div id="section-3" class="section level3">
+<h3>10.4</h3>
+<p>Interpreta el resultado</p>
+</div>
+</div>
+<div id="ejercicio-11" class="section level2">
+<h2>Ejercicio 11</h2>
+<p>Hasta ahora hemos trabajado únicamente con modelos en los que la
+variable respuesta es cuantitativa. Existen modelos análogos que se
+pueden utilizar para casos en los que la variable respuesta es
+cualitativa. Uno de estos modelos es la regresión logística. No
+explicaremos el funcionamiento de la regresión logística, pero vamos a
+aprender cómo se ajusta una regresión logística en R.</p>
+<p>Si nuestra variable respuesta <code>y</code> es cualitativa y
+tenemos, por ejemplo, dos predictores <code>x1</code> y <code>x2</code>,
+ajustamos una regresión logística como sigue:</p>
+<pre class="r"><code>log_reg &lt;- glm( y ~ x1 + x2, data = data, family = binomial(link=&#39;logit&#39;))</code></pre>
+<p>Vamos a utilizar una regresión logística para intentar predecir si
+los pasajeros del titanic sobrevivieron o no, utilizando como variables
+predictoras por ejemplo el sexo, la edad, la clase de su ticket,
+etc.</p>
+<p>Primero instala la librería <code>titanic</code> y carga los
+datos:</p>
+<pre class="r"><code>library(titanic)
+data(&quot;titanic_train&quot;)</code></pre>
+<p>Selecciona las variables Survived, Age, Sex, Embarked, SibSp, Parch,
+Fare, Pclass. Convierte a variables de tipo factor aquellas que
+consideres que son factores. Además añade una variable id que indique el
+número de fila. Guarda esto en un nuevo data frame llamado
+<code>titanic</code>.</p>
+<p><strong>Pista:</strong> usa <code>?titanic_train</code> para ver qué
+significa cada variable.</p>
+<div id="solución-9" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-12" class="section level2">
+<h2>Ejercicio 12</h2>
+<p>Crea dos conjuntos de datos llamados <code>train</code> y
+<code>test</code>. El primero, debe contener observaciones (filas)
+seleccionadas al azar del dataframe titanic del ejercicio anterior. Su
+número de filas ha de ser el 70% del número de filas de titanic. El
+segundo conjunto de datos ha de contener todas las observaciones que
+están en el conjunto de datos titanic pero que no están en
+<code>train</code>.</p>
+<p><strong>Pista:</strong> usa la función <code>sample_frac()</code></p>
+<div id="solución-10" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-13" class="section level2">
+<h2>Ejercicio 13</h2>
+<p>Ajusta un modelo de regresión logística usando los datos
+<code>train</code> donde la variable respuesta sea <code>Survived</code>
+y la variable predictora sea <code>Sex</code>.</p>
+<div id="solución-11" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-14" class="section level2">
+<h2>Ejercicio 14</h2>
+<p>La predicción de una regresión logística es una probabilidad
+correspondiente a la probabilidad de que la variable respuesta tome
+valor 1 (en nuestro caso que el pasajero correspondiente sobreviva)
+según el modelo.</p>
+<p>Calcula las predicciones del modelo anterior sobre los datos
+<code>test</code>. Necesitarás añadir type=“response” a la función
+add_predictions. Construye una nueva variable que tome valor 1 si la
+probabilidad predicha es mayor o igual a 0.5 y cero en caso
+contrario.</p>
+<p>Finalmente, calcula el porcentaje de aciertos comparando la variable
+recién creada y la variable Survived.</p>
+<div id="solución-12" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-15" class="section level2">
+<h2>Ejercicio 15</h2>
+<p>Intenta mejorar el modelo anterior añadiendo más variables. ¿Qué
+variable crees que tiene más poder predictivo?</p>
+<div id="solución-13" class="section level3">
+<h3>Solución</h3>
+</div>
 </div>
 
 

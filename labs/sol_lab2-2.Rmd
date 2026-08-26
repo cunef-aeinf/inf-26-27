@@ -1,5 +1,5 @@
 ---
-title: "Lab 03 - Transformación"
+title: "Lab 2.2 - Transformación"
 output:
   html_document:
     css: ./ds_labs.css

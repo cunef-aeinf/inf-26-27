@@ -87,27 +87,27 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
 <!-- PENDIENTE DE PUBLICAR: descomentar cada laboratorio a medida que avance el curso.
 
 ### Lab 2.1 - Visualización
-  - [Ejercicios](./labs/lab2.html)
+  - [Ejercicios](./labs/lab2-1.html)
 
 
 ### Lab 2.2 - Transformación
-  - [Ejercicios](./labs/lab3.html)
+  - [Ejercicios](./labs/lab2-2.html)
 
 
 ### Lab 3.1 - Importación
-  - [Ejercicios](./labs/lab4.html)
+  - [Ejercicios](./labs/lab3-1.html)
 
 
 ### Lab 3.2 - Data Wrangling
-  - [Ejercicios](./labs/lab5.html)
+  - [Ejercicios](./labs/lab3-2.html)
 
 
 ### Lab 3.3 - Strings, Factores y Fechas
-  - [Ejercicios](./labs/lab6.html)
+  - [Ejercicios](./labs/lab3-3.html)
 
 
 ### Lab 4 - Modelos
-  - [Ejercicios](./labs/lab7.html)
+  - [Ejercicios](./labs/lab4.html)
 
 -->
 

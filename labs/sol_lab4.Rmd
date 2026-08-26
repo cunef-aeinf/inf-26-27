@@ -1,5 +1,5 @@
 ---
-title: "Lab 3.1 - Importación de datos"
+title: "Lab 4 - Modelos"
 output:
   html_document:
     css: ./ds_labs.css
@@ -24,188 +24,408 @@ knitr::opts_chunk$set(fig.width=8, fig.height=6)
 
 ```{r}
 library(tidyverse)
+library(modelr)
 ```
+
 
 ## Ejercicio 1
 
-Simula la lectura de un conjunto de datos escritos en csv que contenga cuatro variables:
-nombre, edad, género y fumador (con valores posibles si/no), y dos observaciones la tuya y la de 
-un amigo/a. Incluye una línea de metadatos al principio con un comentario que describa los datos.
-Por ejemplo:
+Utilizando la base de datos `diamonds`, visualiza la relación entre los siguientes
+pares de variables:
+
+* `cut` y `price`
+* `color` y `price`
+* `clarity` y `price`
+
+¿Encuentras un patrón atípico?
+
+**Pista**: el color de menor calidad para un diamante es J (ligeramente amarillo), la peor claridad es I1 y el peor corte es Fair.
 
 
-```{r, eval=TRUE}
-datos <- "# Datos de Ana y Pedro
-nombre,edad,genero,fuma
-Pedro,29,hombre,no
-Ana,26,mujer,si"
-```
-
-
-Lee los datos en un tibble. A continuación, guárdalos en formato csv dentro de una carpeta que se llame `data`.
-Una vez guardados, vuelve a leerlos (esta vez desde el fichero).
-Finalmente, guárdalos de nuevo en formato excel.
+### Solución
 
 ```{r}
-data <- read_csv(datos, comment = "#")
-write_csv(data, "data/amigos.csv")
+ggplot(diamonds, aes(cut, price)) + geom_boxplot()
+ggplot(diamonds, aes(color, price)) + geom_boxplot()
+ggplot(diamonds, aes(clarity, price)) + geom_boxplot()
 ```
-
-```{r}
-data <- read_csv("data/amigos.csv")
-data
-```
-
-
+Los diamantes de baja calidad son más caros
 
 ## Ejercicio 2
 
-Federal Reserve Economic Data (FRED) es una base de datos mantenida por la Reserva Federal de St. Louis (USA). Contiene casi un millón de series de datos en el tiempo que muestran la evolución de diferentes medidas económicas.
+Ajusta un modelo lineal donde la variable predictora sea `carat` (el peso de los diamantes) y la variable dependiente sea `price`. Obtén el valor de los coeficientes e interprétalos. ¿Qué conclusión extraes?
 
-Accede a la web de FRED [https://fred.stlouisfed.org/](https://fred.stlouisfed.org/). Exporta los datos sobre la evolución del IPC Mediano en csv (en inglés Median Consumer Price Index).
-Cárgalos en R y haz lo siguiente:
 
-* Representa gráficamente la evolución del IPC Mediano desde el año 2000.
-
-* ¿En qué fecha se alcanzó el máximo IPC Mediano? ¿Y el mínimo? 
-
+### Solución
 
 ```{r}
-data_url <- "https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1318&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=MEDCPIM158SFRBCLE&scale=left&cosd=1983-01-01&coed=2023-08-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Monthly&fam=avg&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2023-10-05&revision_date=2023-10-05&nd=1983-01-01"
-download.file(data_url, destfile = "data/ipc.csv")
-ipc <- read_csv("data/ipc.csv")
+mod_diamond <- lm(price ~ carat, data = diamonds)
+summary(mod_diamond)
 ```
-
-```{r}
-ipc %>% filter(observation_date >= "2000-01-01") %>% ggplot(aes(x=observation_date, y=MEDCPIM158SFRBCLE)) + geom_line() + theme_minimal()
-```
-
-```{r}
-ipc %>% arrange(desc(MEDCPIM158SFRBCLE)) %>% slice(1)
-ipc %>% arrange(MEDCPIM158SFRBCLE) %>% slice(1)
-```
-
 
 ## Ejercicio 3
 
-Our World in Data es una iniciativa de la Universidad de Oxford que pretende liberar datos acerca de múltiples fenómenos sociales. En particular ofrece resultados empíricos acerca del cambio de condiciones de vida en el planeta a lo largo del tiempo. Los datos son de diversos ámbitos: económico, social, judicial, ecológico, etc.
-
-¿Cuántas veces has escuchado, en la cena de nochevieja, a un familiar decir: "en mis tiempos se vivía mejor, ¡no había tanto paro!"? Bien, en esta práctica haremos uso de Our World in Data junto con R para que puedas rebatir esos comentarios con datos empíricos. 
-
-Lo primero que has de hacer es acceder a la página [https://ourworldindata.org/](https://ourworldindata.org/). Verás una pestaña que dice "Browse by Topic". Busca en esa pestaña un tópico de interés.
-Al seleccionarlo, llegarás a un artículo que, seguramente, contendrá alguna gráfica. En el gráfico aparecerá una pestaña Download, púlsala y descarga los datos en csv.
-
-Una vez descargados, cárgalos en R e intenta reproducir el gráfico que aparece en el artículo.
-
-Aquí os pongo un ejemplo con datos sobre la evolución del precio del gas en diferentes regiones.
-La gráfica es esta:
-[https://ourworldindata.org/grapher/natural-gas-prices](https://ourworldindata.org/grapher/natural-gas-prices).
+Visualiza las predicciones del modelo anterior, así como los residuos.
+Extrae conclusiones.
 
 
 ### Solución
 
 
 ```{r}
-gp <- read_csv("data/natural-gas-prices.csv")
-```
+grid <- diamonds %>% 
+  data_grid(carat = seq_range(carat, 40)) %>% 
+  add_predictions(mod_diamond, "price") 
 
-```{r}
-ggplot(gp, aes(x=Year, y=`Gas - Prices`, color=Entity)) + 
-  geom_line() + geom_point(size=0.4) + theme_bw() + 
-  labs(title="Natural gas prices", 
-       subtitle="Natural gas prices, measured in current US dollars per cubic meter.") + 
-  scale_color_viridis_d()
-  
+
+diamonds %>% add_residuals(mod_diamond, "resid")
+
+
+ggplot(diamonds, aes(carat, price)) + 
+  geom_point() + 
+  geom_line(data = grid, colour = "red")
 ```
 
 ## Ejercicio 4
 
-Busca en FRED algún dato de tu interés. Descárgalo en **excel**, impórtalo en R,
-construye una gráfica y extrae alguna conclusión.
+Crea un nuevo conjunto de datos llamado `diamonds2` donde elimines todos los
+diamantes de carat mayor que 2.5. Añade dos variables a este conjunto de datos
+llamadas `lcarat` y `lprice` que correspondan respectivamente a logaritmo en base 
+dos de `carat` y `price`.
+
+### Solución
+
+```{r}
+diamonds2 <- diamonds %>% 
+  filter(carat <= 2.5) %>% 
+  mutate(lprice = log2(price), lcarat = log2(carat))
+```
 
 
 
 ## Ejercicio 5
 
-Parsea cada una de estas fechas/horas
+Utilizando los datos creados en el ejercicio anterior, ajusta un modelo lineal donde la variable predictora sea `lcarat` y la variable dependiente sea `lprice`. Obtén el valor de los coeficientes e interprétalos. Según este modelo, ¿qué le sucede al precio de un diamante si multiplico por dos su `carat`?
+
+### Solución
 
 ```{r}
-d1 <- "January 01, 2010"
-d2 <- "2015-Mar-07"
-d3 <- "06-Jun-2017"
-d4 <- c("August 19 (2015)", "July 1 (2015)")
-d5 <- "12/30/14" # Dec 30, 2014
-t1 <- "1705"
-t2 <- "11:15:10.12 PM"
+mod_diamond <- lm(lprice ~ lcarat, data = diamonds2)
+coefficients(mod_diamond)
 ```
 
-```{r}
-# Parsing dates
-parsed_d1 <- parse_date(d1, format = "%B %d, %Y")
-parsed_d2 <- parse_date(d2, format = "%Y-%b-%d")
-parsed_d3 <- parse_date(d3, format = "%d-%b-%Y")
-parsed_d4 <- parse_date(d4, format = "%B %d (%Y)")
-parsed_d5 <- parse_date(d5, format = "%m/%d/%y")
+$$
+\log_2 y = \beta_0 + \beta_1 \log_2 x
+$$
 
-# Parsing times
-parsed_t1 <- parse_time(t1, format = "%H%M")
-parsed_t2 <- parse_time(t2, format = "%I:%M:%OS %p")
-```
+$$
+y = 2^{\beta_0} x^{\beta_1}
+$$
+
+$$
+y = 2^{\beta_0} (2x)^{\beta_1} = 2^{\beta_0} (x)^{\beta_1} 2^{\beta_1}
+$$
 
 
 ## Ejercicio 6
 
-Elabora un código que haga lo siguiente:
+Visualiza las predicciones del modelo anterior, así como los residuos.
+Extrae conclusiones. ¿Se ajusta este modelo mejor que el anterior a los datos?
 
-* Compruebe si existe una carpeta llamada "datos_paro", si no existe, ha de crearla.
+### Solución
 
-* Descargue los datos de desempleo de España de FRED (en FRED estos datos se denominan: "Unemployment Rate: Aged 15-74: All Persons for Spain") y los guarde en la carpeta "datos_paro".
+```{r}
+grid <- diamonds2 %>% data_grid(lcarat) %>% 
+  add_predictions(mod_diamond, "lpred")
 
-* Lea los datos recién descargados.
-
-* Si la tasa de desempleo más reciente es inferior a 10 % imprima el mensaje
-`"La tasa de desempleo ha bajado del 10%"`, de lo contrario, se imprimirá
-`"La tasa de desempleo se mantiene por encima del 10%"`
-
-
-```{r, eval=FALSE}
-data_url <- "https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=off&txtcolor=%23444444&ts=12&tts=12&width=1318&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=LRUN74TTESQ156S&scale=left&cosd=1999-01-01&coed=2023-01-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Quarterly&fam=avg&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2023-10-05&revision_date=2023-10-05&nd=1999-01-01"
-
-if(!dir.exists("datos_paro")){
- dir.create("datos_paro") 
-}
-download.file(data_url, "datos_paro/paro_esp.csv")
-paro <- read_csv("datos_paro/paro_esp.csv")
-paro <- paro %>% arrange(desc(DATE)) %>% slice(1) %>% select(LRUN74TTESQ156S)
-
-if(paro < 10){
-  print("La tasa de desempleo ha bajado del 10%")
-} else{
-  print("La tasa de desempleo se mantiene por encima del 10%")
-}
+ggplot(diamonds2, aes(lcarat)) + 
+  geom_point( aes(y=lprice) ) + 
+  geom_line(data = grid, aes(y=lpred), colour = "red", size = 1)
 ```
-
-
-
-## Ejercicio 7
-
-Weyland Yutani Manufacturing quiere realizar un análisis de costes. Para ello, se te proporciona un informe en Excel con los costes por región.
-
-1. Lee el archivo Excel **weyland_cost_results.xlsx**.
-2. Notarás que la tabla tiene muchos valores NA y filas innecesarias, necesitamos hacer una limpieza:
-
-    - Existen filas que muestran subtotales de cada `region` (por ejemplo, "Central Total" o "East Total") y de toda la compañía ("Grand Total"). Filtra el data frame para que no tenga estas filas de subtotales. Las filas con valores NA deben permanecer después de este filtrado. *Sugerencia:* Puedes utilizar la función `endsWith()` para filtrar estos datos.
-    
-    - Ahora necesitamos llenar los valores NA. Ten en cuenta que la `region` es la misma que la fila anterior, por lo que necesitarás completar con el mismo valor que la fila superior de la fila en la que te encuentras. Investiga el uso de `fill` para este propósito. 
 
 
 ```{r}
-library("readxl")
-read_excel("data/weyland_cost_results.xlsx", skip=6) %>% 
-  janitor::clean_names() %>% 
-  filter(!endsWith(region, "Total") | is.na(region)) %>% 
-  fill(region, .direction = "down")
+grid <- diamonds2 %>% 
+  data_grid(carat) %>% 
+  mutate(lcarat = log2(carat)) %>% 
+  add_predictions(mod_diamond, "lprice") %>% 
+  mutate(price = 2 ^ lprice)
+
+
+ggplot(diamonds2, aes(carat, price)) + 
+  geom_point() + 
+  geom_point(data = grid, colour = "red", size = 1)
 
 ```
 
+## Ejercicio 7
+
+Utilizando la base de datos `diamonds2`, visualiza la relación entre las siguientes variables y el residuo calculado en el ejercicio anterior.
+* `cut` 
+* `color`
+* `clarity`
+
+¿Qué conclusión extraes?
+
+### Solución
+
+```{r}
+diamonds2 <- diamonds2 %>% 
+  add_residuals(mod_diamond, "lresid")
+
+ggplot(diamonds2, aes(lcarat, lresid)) + 
+  geom_point()
+```
+
+```{r}
+ggplot(diamonds2, aes(cut, lresid)) + geom_boxplot()
+ggplot(diamonds2, aes(color, lresid)) + geom_boxplot()
+ggplot(diamonds2, aes(clarity, lresid)) + geom_boxplot()
+```
+
+
+
+## Ejercicio 8
+
+Explora los datos `sim3`  de `modelr`. ¿De qué tipo son las variables `x1` y `x2`? ¿Y la `y`?
+Ajusta un modelo lineal con variable respuesta `y` y predictores `x1` y `x2`  y visualiza
+sus predicciones.
+
+Interpreta los coeficientes de este modelo.
+
+
+### Solución
+
+```{r}
+ggplot(sim3, aes(x1, y)) + 
+  geom_point(aes(colour = x2))
+```
+
+```{r}
+mod1 <- lm(y ~ x1 + x2, data = sim3)
+
+coef(mod1)
+
+grid <- sim3 %>% 
+  data_grid(x1, x2) %>% 
+  add_predictions(mod1)
+
+ggplot(sim3, aes(x1, y, colour = x2)) + 
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred)) 
+```
+
+$$
+y = \beta_0 + \beta_1x_1 + \beta_2 x_{2b} + \beta_3 x_{2c}+ \beta_4 x_{2d}
+$$
+
+$$
+y = \beta_0 + \beta_1 x + \beta_4 
+$$
+
+$$
+y = \beta_0 + \beta_1 x
+$$
+
+
+$$
+y = \beta_0 + \beta_1 (x+1) + \beta_3 = y + \beta_1
+$$
+
+## Ejercicio 9
+
+Con los datos anteriores, ajusta el siguiente modelo
+
+$$
+y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{12} x_1 x_2
+$$
+
+en R este modelo se corresponde con la fórmula `y ~ x1 * x2`.
+Visualiza las predicciones del modelo, e interpreta sus coeficientes.
+
+### Solución
+
+```{r}
+mod2 <- lm(y ~ x1 * x2, data = sim3)
+grid <- sim3 %>% 
+  data_grid(x1, x2) %>% 
+  gather_predictions(mod2)
+
+ggplot(sim3, aes(x1, y, colour = x2)) + 
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred)) 
+```
+
+## Ejercicio 10
+
+Para este ejercicio necesitas cargar la librería `infer`
+
+```{r load-packages, warning = FALSE, message = FALSE}
+library(infer)
+```
+
+### Datos 
+
+
+La Encuesta Social General (GSS) recopila datos sobre la sociedad estadounidense contemporánea con el fin de comprender y explicar las tendencias y constantes en actitudes, comportamientos y atributos. Se han monitorizado cientos de tendencias desde 1972. 
+
+La GSS contiene un núcleo estándar de preguntas demográficas, de comportamiento y sobre actitudes, además de temas de interés especial. Entre los temas tratados se encuentran las libertades civiles, el crimen y la violencia, la tolerancia entre grupos, la moralidad, las prioridades nacionales de gasto, el bienestar psicológico, la movilidad social y el estrés y los eventos traumáticos.
+
+Analizaremos datos de la GSS de 2018 para entender cuánto tiempo pasan los adultos estadounidenses en el correo electrónico.
+
+```{r load-data, message = FALSE}
+gss_email <- read_csv("data/gss_email_2018.csv")
+```
+
+
+Utilizaremos la variable `email`: el número de minutos que los encuestados pasan en el correo electrónico semanalmente. 
+
+El objetivo de este ejercicio es calcular el intervalo de confianza del 95% para el tiempo medio que los americanos gastan en el correo.
+
+
+### 10.1
+
+Fija una semilla para controlar el proceso aleatorio.
+
+```{r}
+set.seed(124534)
+```
+
+### 10.2
+
+Calcula la distribución bootstrap
+
+```{r}
+bss <- gss_email %>%
+  specify(response = email) %>% 
+  generate(reps = 5000, type = "bootstrap")
+```
+
+
+
+```{r glimpse-boot-dist}
+glimpse(bss)
+```
+
+### 10.3
+
+Calcula y visualiza el IC
+
+```{r calc-ci}
+bss_stat <- bss %>% calculate(stat="mean")
+```
+
+```{r plot-boot-dist-ggplot}
+ci <- bss_stat %>%
+  summarise(lower_b = quantile(stat, 0.025), 
+            upper_b = quantile(stat, 0.975))
+ci
+```
+
+```{r  plot-boot-dist-infer}
+ggplot(data = bss_stat, mapping = aes(x = stat)) +
+  geom_histogram(binwidth = 5, alpha = .5) +
+  geom_vline(xintercept = ci$lower_b,
+             color = "steelblue", lty = 2, size = 1) + 
+  geom_vline(xintercept = ci$upper_b,
+             color = "steelblue", lty = 2, size = 1) +
+  labs(title = "Distribución Bootstrap de la media del tiempo gastado en email",
+       subtitle = "con IC de 95%",
+       x = "Medias", y = "Num") +
+  theme_minimal()
+
+```
+
+### 10.4 
+
+Interpreta el resultado
+
+
+
+## Ejercicio 11
+
+Hasta ahora hemos trabajado únicamente con modelos en los que la variable respuesta es cuantitativa.
+Existen modelos análogos que se pueden utilizar para casos en los que la variable respuesta es cualitativa. Uno de estos modelos es la regresión logística.
+No explicaremos el funcionamiento de la regresión logística, pero vamos a aprender cómo se ajusta una regresión logística en R.
+
+Si nuestra variable respuesta `y` es cualitativa y tenemos, por ejemplo, dos predictores `x1` y `x2`, ajustamos una regresión logística como sigue:
+
+```{r, eval=F}
+log_reg <- glm( y ~ x1 + x2, data = data, family = binomial(link='logit'))
+```
+
+Vamos a utilizar una regresión logística para intentar predecir si los pasajeros del titanic sobrevivieron o no, utilizando como variables predictoras por ejemplo el sexo, la edad, la clase de su ticket, etc.
+
+Primero instala la librería `titanic` y carga los datos:
+
+```{r}
+library(titanic)
+data("titanic_train")
+```
+
+Selecciona las variables Survived, Age, Sex, Embarked, SibSp, Parch, Fare, Pclass.
+Convierte a variables de tipo factor aquellas que consideres que son factores. Además
+añade una variable id que indique el número de fila. Guarda esto en un nuevo data frame llamado `titanic`.
+
+**Pista:** usa `?titanic_train` para ver qué significa cada variable.
+
+### Solución
+
+```{r}
+titanic <- titanic_train %>% select(Survived, Age, Sex, Embarked, SibSp, 
+                                    Parch, Fare, Pclass) %>% 
+  mutate(Survived=as.factor(Survived), Sex=as.factor(Sex), 
+         Embarked=as.factor(Embarked), Pclass = as.factor(Pclass)) %>% 
+  mutate(row_num = row_number())
+
+```
+
+## Ejercicio 12
+
+Crea dos conjuntos de datos llamados `train` y `test`.
+El primero, debe contener observaciones (filas) seleccionadas al azar del dataframe
+titanic del ejercicio anterior. Su número de filas ha de ser el 70% del número de filas de titanic. El segundo conjunto de datos ha de contener todas las observaciones que están en el conjunto de datos titanic pero que no están en `train`.
+
+**Pista:** usa la función `sample_frac()`
+
+### Solución
+
+```{r}
+train <- titanic %>% sample_frac(size=0.7)
+test <- titanic %>% anti_join(train, by="row_num")
+```
+
+## Ejercicio 13
+
+Ajusta un modelo de regresión logística usando los datos `train` donde la variable
+respuesta sea `Survived` y la variable predictora sea `Sex`.
+
+### Solución
+
+```{r}
+log_reg <- glm( Survived ~ Sex, data = train, family = binomial(link='logit'))
+```
+
+
+## Ejercicio 14
+
+La predicción de una regresión logística es una probabilidad correspondiente a la probabilidad de que la variable respuesta tome valor 1 (en nuestro caso que el pasajero correspondiente sobreviva) según el modelo.
+
+Calcula las predicciones del modelo anterior sobre los datos `test`. Necesitarás añadir type="response" a la función add_predictions. Construye una nueva variable que tome valor 1 si la probabilidad predicha es mayor o igual a 0.5 y cero en caso contrario.
+
+Finalmente, calcula el porcentaje de aciertos comparando la variable recién creada y la variable Survived.
+
+### Solución
+
+```{r}
+test %>% add_predictions(log_reg, type = "response") %>% mutate(Survived_pred = ifelse(pred > 0.5, 1, 0)) %>% 
+  summarise(mean(Survived == Survived_pred))
+```
+
+
+## Ejercicio 15
+
+Intenta mejorar el modelo anterior añadiendo más variables. ¿Qué variable crees que tiene más poder predictivo?
+
+### Solución
 

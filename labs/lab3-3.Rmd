@@ -149,3 +149,14 @@ Para mejorar la visualización, recodifica los niveles de esta variable para que
 
 ### Solución
 
+## Ejercicio 9
+
+Los datos contenidos en `amazon_reviews.csv` contienen reviews y notas que ciertos usuarios han dado a una serie de productos de Amazon. Las variables incluidas son:
+
+* `review`: texto de la review
+* `rate`: nota (del 1 al 5)
+
+Crea una nueva variable llamada `n_loves` que corresponda al número de veces que aparece la palabra "love" o "Love" en cada review. Calcula la media de `n_loves` para cada valor de `rate`. Presenta los resultados en un único tibble y extrae una conclusión.
+
+### Solución
+
