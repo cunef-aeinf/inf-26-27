@@ -1,0 +1,338 @@
+---
+title: "Lab 04 - Modelos"
+output:
+  html_document
+---
+
+```{r packages_setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(fig.width = 8, fig.height = 6)
+```
+
+
+```{r}
+library(tidyverse)
+library(modelr)
+```
+
+
+## Ejercicio 1
+
+Utilizando la base de datos `diamonds`, visualiza la relación entre los siguientes
+pares de variables:
+
+* `cut` y `price`
+* `color` y `price`
+* `clarity` y `price`
+
+¿Encuentras un patrón atípico?
+
+**Pista**: el color de menor calidad para un diamante es J (ligeramente amarillo), la peor claridad es I1 y el peor corte es Fair.
+
+
+### Solución
+
+```{r}
+ggplot(diamonds, aes(cut, price)) +
+  geom_boxplot()
+
+ggplot(diamonds, aes(color, price)) +
+  geom_boxplot()
+
+ggplot(diamonds, aes(clarity, price)) +
+  geom_boxplot()
+```
+
+Sí aparece un patrón que, a primera vista, resulta extraño: algunas categorías de peor calidad parecen tener precios medianos más altos. En particular, no siempre observamos una relación monotónica simple entre calidad y precio.
+
+La explicación es que el precio no depende solo de `cut`, `color` o `clarity`. Una variable muy importante es `carat`, y los diamantes más grandes tienden a ser mucho más caros. Por tanto, estas gráficas mezclan dos efectos: la calidad y el tamaño. La conclusión correcta no es que "los diamantes de peor calidad son mejores", sino que con estas comparaciones bivariantes todavía hay confusión por variables omitidas, especialmente por el peso.
+
+## Ejercicio 2
+
+Ajusta un modelo lineal donde la variable predictora sea `carat` (el peso de los diamantes ) y la variable dependiente sea `price`. Obtén el valor de los coeficientes e interprétalos. ¿Qué conclusión extraes?
+
+
+### Solución
+
+```{r}
+mod_diamond <- lm(price ~ carat, data = diamonds)
+summary(mod_diamond)
+```
+
+El modelo estimado es:
+
+$$
+\widehat{price} = -2256.36 + 7756.43 \cdot carat
+$$
+
+Interpretación de los coeficientes:
+
+* El intercepto (`-2256.36`) es el precio predicho cuando `carat = 0`. No tiene una interpretación útil, porque un diamante con peso cero no es un caso realista.
+* La pendiente (`7756.43`) indica que, según este modelo lineal, si el peso aumenta en 1 quilate, la predicción del precio aumenta en unos 7756 dólares.
+
+La conclusión principal es que existe una relación positiva muy fuerte entre `carat` y `price`, pero eso no implica necesariamente que la relación sea perfectamente lineal en todo el rango. De hecho, al tratarse de una variable de precio, es razonable sospechar cierta curvatura y una variabilidad creciente a medida que aumenta el peso.
+
+## Ejercicio 3
+
+Visualiza las predicciones del modelo anterior, así como los residuos.
+Extrae conclusiones.
+
+
+### Solución
+
+
+```{r}
+grid <- diamonds %>%
+  data_grid(carat = seq_range(carat, 40)) %>%
+  add_predictions(mod_diamond, "price")
+
+diamonds_res <- diamonds %>%
+  add_predictions(mod_diamond, "pred") %>%
+  add_residuals(mod_diamond, "resid")
+
+ggplot(diamonds, aes(carat, price)) +
+  geom_point(alpha = 0.2) +
+  geom_line(data = grid, colour = "red", linewidth = 1)
+```
+
+```{r}
+ggplot(diamonds_res, aes(pred, resid)) +
+  geom_point(alpha = 0.15) +
+  geom_hline(yintercept = 0, colour = "red")
+```
+
+La recta recoge bien la tendencia general: a mayor `carat`, mayor precio. Sin embargo, la nube de puntos muestra que la relación no es completamente lineal y que la dispersión aumenta mucho para diamantes grandes.
+
+En la gráfica de residuos no observamos una banda homogénea alrededor de cero. La variabilidad cambia con el nivel predicho y aparecen patrones sistemáticos, señal de que el modelo lineal simple no describe del todo bien la estructura de los datos.
+
+Por tanto, el modelo del ejercicio 2 es útil como primera aproximación, pero todavía es mejorable.
+
+## Ejercicio 4
+
+Crea un nuevo conjunto de datos llamado `diamonds2` donde elimines todos los
+diamantes de carat mayor que 2.5. Añade dos variables a este conjunto de datos
+llamandas `lcarat` y `lprice` que correspondan respectivamente a logaritmo en base 
+dos de `carat` y `price`.
+
+### Solución
+
+```{r}
+diamonds2 <- diamonds %>%
+  filter(carat <= 2.5) %>%
+  mutate(
+    lprice = log2(price),
+    lcarat = log2(carat)
+  )
+```
+
+## Ejercicio 5
+
+Utilizando los datos creados en el ejercicio anterior, ajusta un modelo lineal donde la variable predictora sea `lcarat` y la variable dependiente sea `lprice`. Obtén el valor de los coeficientes e interprétalos. Según este modelo, que le sucede al precio de un diamante si multiplico por dos su `carat`.
+
+### Solución
+
+```{r}
+mod_diamond_log <- lm(lprice ~ lcarat, data = diamonds2)
+summary(mod_diamond_log)
+```
+
+El modelo estimado es:
+
+$$
+\widehat{\log_2(price)} = 12.1939 + 1.6814 \cdot \log_2(carat)
+$$
+
+Equivalentemente,
+
+$$
+\widehat{price} = 2^{12.1939} \cdot carat^{1.6814}
+$$
+
+Interpretación:
+
+Para la pendiente ($\beta_1 = 1.6814$): Aumentar en una unidad el logaritmo en base 2 del carat produce un aumento de 1.6814 unidades en la predicción del logaritmo en base 2 del price.
+
+Para el intercepto ($\beta_0 = 12.1939$): Cuando el logaritmo en base 2 del carat es cero (lo que equivale a un diamante de exactamente 1 quilate), la predicción del logaritmo en base 2 del price es 12.1939.
+
+Si multiplicamos `carat` por 2, la predicción del precio se multiplica por:
+
+$$
+2^{1.6814} \approx 3.21
+$$
+
+
+## Ejercicio 6
+
+Visualiza las predicciones del modelo anterior, así como los residuos.
+Extrae conclusiones. ¿Se ajusta este modelo mejor que el anterior a los datos?
+
+### Solución
+
+```{r}
+grid_log <- diamonds2 %>%
+  data_grid(lcarat) %>%
+  add_predictions(mod_diamond_log, "lpred")
+
+diamonds2_res <- diamonds2 %>%
+  add_predictions(mod_diamond_log, "lpred") %>%
+  add_residuals(mod_diamond_log, "lresid")
+
+ggplot(diamonds2, aes(lcarat, lprice)) +
+  geom_point(alpha = 0.2) +
+  geom_line(data = grid_log, aes(y = lpred), colour = "red", linewidth = 1)
+```
+
+
+```{r}
+ggplot(diamonds2_res, aes(lpred, lresid)) +
+  geom_point(alpha = 0.15) +
+  geom_hline(yintercept = 0, colour = "red")
+```
+
+```{r}
+grid_price <- diamonds2 %>%
+  data_grid(carat) %>%
+  mutate(lcarat = log2(carat)) %>%
+  add_predictions(mod_diamond_log, "lprice") %>%
+  mutate(price = 2^lprice)
+
+ggplot(diamonds2, aes(carat, price)) +
+  geom_point(alpha = 0.2) +
+  geom_line(data = grid_price, colour = "red", linewidth = 1)
+```
+
+En escala logarítmica la relación entre tamaño y precio es bastante más lineal. Además, los residuos quedan más centrados y con una dispersión más homogénea que en el modelo lineal en niveles.
+
+Esto indica que el modelo log-log se ajusta mejor a los datos.
+
+Por tanto, sí, este modelo es preferible al del ejercicio 2 para describir la relación entre ambas variables.
+
+## Ejercicio 7
+
+Utilizando la base de datos `diamonds2`, visualiza la relación entre las siguientes variables y el residuo calculado en el ejercicio anterior.
+* `cut` 
+* `color`
+* `clarity`
+
+¿Qué conclusión extraes?
+
+### Solución
+
+```{r}
+ggplot(diamonds2_res, aes(cut, lresid)) +
+  geom_boxplot()
+
+ggplot(diamonds2_res, aes(color, lresid)) +
+  geom_boxplot()
+
+ggplot(diamonds2_res, aes(clarity, lresid)) +
+  geom_boxplot()
+```
+Al visualizar la relación entre los residuos del modelo anterior y las variables cut, color y clarity, observamos que los residuos no se distribuyen de forma aleatoria alrededor de cero. En particular, para la variable clarity, la diferencia es muy evidente: a mayor claridad, mayores son los residuos medios.
+
+Cuando simplemente visualizas el price frente a clarity (Ejercicio 1), sin controlar por otras variables, observábamos un patrón contraintuitivo: los diamantes con mejor claridad parecen tener un menor precio mediano.
+
+Esto se debe a que la claridad está correlacionada negativamente con otra variable que tiene gran impacto sobre el precio: el peso del diamante (carat). Por lo general, los diamantes de mejor claridad tienden a ser más pequeños. Como el precio depende tan fuertemente del peso, este factor arrastra el precio hacia abajo. Aunque la claridad debería aumentar el precio, el efecto dominante del menor tamaño oculta ese impacto positivo.
+
+Cuando ajustamos el modelo de price en función de carat, estamos extrayendo el efecto del peso. Es decir, eliminamos la variabilidad en el precio que se explica únicamente por el tamaño. Al visualizar la claridad frente a los residuos de este modelo, estamos analizando una pregunta distinta: ¿Cuánto se desvía el precio observado de lo esperado basándonos únicamente en su peso?
+
+En este gráfico de residuos encontramos que a mejor claridad, mayor es el residuo mediano (el diamante cuesta más de lo que la recta del peso predecía). Esto nos demuestra que la claridad sí tiene un efecto positivo sobre el precio, pero este comportamiento estaba oculto por su asociación negativa con el peso.
+
+
+## Ejercicio 8
+
+Explora los datos `sim3`  de `modelr`. ¿De qué tipo son las variables `x1` y `x2`? ¿Y la `y`?
+Ajusta un modelo lineal con variable respuesta `y` y predictores `x1` y `x2`  y visualiza
+sus predicciones.
+
+Interpreta los coeficientes de este modelo.
+
+
+### Solución
+
+```{r}
+glimpse(sim3)
+```
+
+`x1` es una variable numérica, `x2` es una variable categórica (factor) con 4 niveles, e `y` es una variable numérica continua.
+
+```{r}
+ggplot(sim3, aes(x1, y, colour = x2)) +
+  geom_point()
+```
+
+```{r}
+mod1 <- lm(y ~ x1 + x2, data = sim3)
+
+summary(mod1)
+
+grid <- sim3 %>%
+  data_grid(x1, x2) %>%
+  add_predictions(mod1)
+
+ggplot(sim3, aes(x1, y, colour = x2)) +
+  geom_point() +
+  geom_line(data = grid, aes(y = pred), linewidth = 1)
+```
+
+El modelo es:
+
+$$
+y = \beta_0 + \beta_1 x_1 + \beta_2 I(x_2=b) + \beta_3 I(x_2=c) + \beta_4 I(x_2=d) + u
+$$
+
+Si tomamos como categoría de referencia el nivel `a` de `x2`, la interpretación es:
+
+* `\beta_0`: valor predicho de `y` cuando `x1 = 0` y `x2 = a`;
+* `\beta_1`: cambio esperado en la predicción de `y` cuando `x1` aumenta una unidad, manteniendo fija la categoría de `x2`;
+* `\beta_2`, `\beta_3` y `\beta_4`: diferencia en la predicción de `y` entre cada categoría (`b`, `c`, `d`) y la categoría de referencia `a`, manteniendo fijo `x1`.
+
+Con las estimaciones obtenidas:
+
+* la pendiente común de `x1` es aproximadamente `-0.197`, así que `y` disminuye ligeramente cuando `x1` aumenta;
+* respecto a la categoría `a`, las categorías `b`, `c` y `d` desplazan la recta hacia arriba en unos `2.89`, `4.81` y `2.36` puntos, respectivamente.
+
+Como el modelo no incluye interacción, todas las categorías comparten la misma pendiente y solo cambia el intercepto.
+
+## Ejercicio 9
+
+Con los datos anteriores, ajusta el siguiente modelo
+
+$$
+y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{12} x_1 x_2
+$$
+
+en R este modelo se corresponde con la fórmula `y ~ x1 * x2`.
+Visualiza las predicciones del modelo, e interpreta sus coeficientes.
+
+### Solución
+
+```{r}
+mod2 <- lm(y ~ x1 * x2, data = sim3)
+summary(mod2)
+
+grid2 <- sim3 %>%
+  data_grid(x1, x2) %>%
+  add_predictions(mod2)
+
+ggplot(sim3, aes(x1, y, colour = x2)) +
+  geom_point() +
+  geom_line(
+    data = grid2, aes(y = pred), linewidth = 1)
+```
+
+Ahora permitimos que la pendiente de `x1` cambie según el nivel de `x2`. Tomando de nuevo `a` como categoría de referencia:
+
+* `\beta_0` es el intercepto del grupo `a`;
+* `\beta_1` es la pendiente de `x1` para el grupo `a`;
+* `\beta_2`, `\beta_3`, `\beta_4` recogen cómo cambia el intercepto de los grupos `b`, `c` y `d` respecto a `a`;
+* los términos de interacción (`x1:x2b`, `x1:x2c`, `x1:x2d`) indican cuánto cambia la pendiente de cada grupo respecto a la pendiente del grupo `a`.
+
+Por ejemplo, con las estimaciones del modelo:
+
+* para `x2 = a`, la pendiente es aproximadamente `-0.093`;
+* para `x2 = b`, la pendiente es `-0.093 - 0.760 = -0.853`;
+* para `x2 = c`, la pendiente es `-0.093 + 0.068 = -0.025`;
+* para `x2 = d`, la pendiente es `-0.093 + 0.277 = 0.184`.
+
+El efecto de `x1` sobre `y` no es el mismo para todas las categorías de `x2`. Por eso, frente al modelo del ejercicio 8, este modelo es más flexible y puede capturar rectas con pendientes distintas para cada grupo.
