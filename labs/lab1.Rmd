@@ -1,5 +1,5 @@
 ---
-title: "Lab 01 - Programación en R"
+title: "Lab 1 - Programación en R"
 output:
   html_document:
     css: ./ds_labs.css
