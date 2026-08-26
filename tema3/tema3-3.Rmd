@@ -1,7 +1,7 @@
 ---
 title: "Tema 3.3"
 author: "Roi Naveiro"
-date: ""
+date: "Curso 2026-2027"
 output: 
    xaringan::moon_reader:
     css: "ds_slides.css"
@@ -36,6 +36,7 @@ class: center, middle, inverse, title-slide
 <br>
 .pull-left[
 ### Roi Naveiro
+#### Curso 2026-2027
 ]
 ---
 
@@ -192,7 +193,7 @@ str_to_title(x)
 Permiten describir patrones en strings. Se pueden hacer varias cosas con los
 patrones
 
-* Determinar que strings cumplen el patrón. 
+* Determinar qué strings cumplen el patrón. 
 
 * Determinar en qué posición aparece el patrón
 
@@ -211,7 +212,7 @@ x3 <- "Resido en España (ES)"
 ---
 ## Strings: expresiones regulares
 
-Vamos aprender a jugar con patrones muy sencillos. Primero, coincidencia 
+Vamos a aprender a jugar con patrones muy sencillos. Primero, coincidencia 
 exacta (ojo mayúsculas y minúsculas!)
 
 ```{r}
@@ -222,7 +223,7 @@ str_view(x, "Le")
 ---
 ## Strings: expresiones regulares
 
-Para identificar cualquier caracter usamos `.`
+Para identificar cualquier carácter usamos `.`
 
 ```{r}
 x <- c("Cats", "Uñas Chung Lee", "Capital")
@@ -370,7 +371,7 @@ class: center, middle, inverse
 
 * Para trabajar con variables categóricas con número fijo de valores
 
-* Trabajaremos con `forcats` de tiduverse
+* Trabajaremos con `forcats` de tidyverse
 
 * Crear factores
 
@@ -532,7 +533,7 @@ class: center, middle, inverse
 ---
 ## Fechas y horas
 
-Para trabajar con fechas y horas usamos `lubridate` que **NO** es parte tidyverse.
+Para trabajar con fechas y horas usamos `lubridate` que **NO** es parte de tidyverse.
 Descárgalo y cárgalo en R
 
 ```{r}
@@ -677,7 +678,7 @@ wday(datetime, label = TRUE, abbr = FALSE)
 ---
 ## Fechas y horas - Componentes
 
-Podemo modificar componentes usando las mismas funciones
+Podemos modificar componentes usando las mismas funciones
 
 ```{r}
 (datetime <- ymd_hms("2016-07-08 12:34:56"))
@@ -742,7 +743,7 @@ as.duration(mi_edad)
 ---
 ## Fechas y horas - Operaciones con duraciones
 
-Funciones úliles. Siempre en segundos!!
+Funciones útiles. Siempre en segundos!!
 
 ```{r}
 dseconds(15)
@@ -753,7 +754,7 @@ ddays(0:5)
 ---
 ## Fechas y horas - Operaciones con duraciones
 
-Funciones úliles. Siempre en segundos!!
+Funciones útiles. Siempre en segundos!!
 
 ```{r}
 dweeks(3)
@@ -785,8 +786,8 @@ año_pasado
 
 
 ```{r}
-ymd("2020-01-1") + months(1)   # "2020-02-29" (respeta el calendario)
-ymd("2020-01-1") + dmonths(1)  # "2020-03-02" (30.44 días exactos)
+ymd("2020-01-1") + months(1)   # "2020-02-01" (respeta el calendario)
+ymd("2020-01-1") + dmonths(1)  # "2020-01-31" (30.44 días exactos)
 ```
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Tema 3.1"
 author: "Roi Naveiro"
-date: ""
+date: "Curso 2026-2027"
 output: 
    xaringan::moon_reader:
     css: "ds_slides.css"
@@ -36,6 +36,7 @@ class: center, middle, inverse, title-slide
 <br>
 .pull-left[
 ### Roi Naveiro
+#### Curso 2026-2027
 ]
 ---
 
@@ -193,7 +194,7 @@ red_wine_data %>% head(5)
 
 Algunos parámetros importantes
 
-* _na.strings_ - elegir el caracter que representa un valor ausente
+* _na.strings_ - elegir el carácter que representa un valor ausente
 * _nrows_ - cuántas filas leer (e.g. nrows=10 lee 10 filas)
 * _skip_ - número de filas a ignorar hasta empezar lectura
 
@@ -339,7 +340,7 @@ df %>% janitor::clean_names()
 ---
 ## Lectura de datos
 
-Podemos indicar que caracteres se refieren a un valor ausente
+Podemos indicar qué caracteres se refieren a un valor ausente
 
 ```{r}
 df <- read_csv("a,b,c
@@ -386,7 +387,7 @@ str(parse_date(c("2022-01-04")))
 ## Parsear vectores
 
 Como todas las funciones de tidyverse, las funciones `parse*()` son uniformes:
-el primer argumento es el vector a parsear y `na` permite indicar que caracteres
+el primer argumento es el vector a parsear y `na` permite indicar qué caracteres
 serán tratados como valores ausentes
 
 ```{r}
@@ -466,12 +467,12 @@ parse_factor(c("hombre", "mujer", "mujer", "otro", "portugues"), levels=c("hombr
 ---
 ## Tipos de parseadores - Fechas y horas
 
-`parse_datetime()` para fecha con hora. Espera, en este orden, año, mes, dia, hora, minuto y segundo
+`parse_datetime()` para fecha con hora. Espera, en este orden, año, mes, día, hora, minuto y segundo
 ```{r}
 parse_datetime("2022-01-01T1015")
 ```
 
-`parse_date()` para fecha. Espera, en este orden, año, mes, dia, separados por `-` o `/`
+`parse_date()` para fecha. Espera, en este orden, año, mes, día, separados por `-` o `/`
 ```{r}
 parse_date("2022/01/01")
 ```
@@ -613,7 +614,7 @@ write_csv(df, "df.csv")
 
 Con estas funciones se pierde información (por ejemplo el tipo de columnas).
 
-Recomendable usar `write_rds()` y `read_rds()` (análogas a `readRDS()` y `writeRDS()` de R Base)
+Recomendable usar `write_rds()` y `read_rds()` (análogas a `readRDS()` y `saveRDS()` de R Base)
 
 Estas guardan ficheros en formato binario RDS
 

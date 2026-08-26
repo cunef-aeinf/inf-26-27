@@ -28,6 +28,7 @@ class: center, middle, inverse, title-slide
 &lt;br&gt;
 .pull-left[
 ### Roi Naveiro
+#### Curso 2026-2027
 ]
 ---
 
@@ -73,7 +74,7 @@ class: center, middle, inverse
 
 # Datos Organizados
 
-* Aprenderemos forma consistente de organizar los datos en R
+* Aprenderemos una forma consistente de organizar los datos en R
 
 * Lo haremos a través del paquete `tidyr` del universo `tidyverse`
 
@@ -192,7 +193,7 @@ table4b
 * Hablamos de datos organizados si:
 
   - Cada variable corresponde a una columna
-  - Cada fila a un observación
+  - Cada fila a una observación
   - Cada celda a un valor
   
 &lt;img src="img/tidy.png" width="80%" style="display: block; margin: auto;" /&gt;
@@ -405,9 +406,9 @@ table3 %&gt;% separate(rate, into = c("cases", "population"))
 ---
 # Separar y unir columnas
 
-* Por defecto, separa cuando encuentra carácter no alfanumérico.
+* Por defecto, separa cuando encuentra un carácter no alfanumérico.
 
-* Se puede especificar el caracter.
+* Se puede especificar el carácter.
 
 
 ``` r
@@ -499,7 +500,7 @@ class: center, middle, inverse
 * Cuando los datos están repartidos en múltiples tablas, hablamos de **datos relacionales**
 
 ---
-# Keys (Llaves)
+# Llaves
 
 * Son **variables** que se usan para conectar pares de tablas.
 
@@ -551,7 +552,7 @@ Una PK y su FK en otra tabla forman una **relación**.
 | Necesita **más información** | Aporta **información extra** |
 | Es la tabla **dependiente**  | Es la tabla **maestra**     |
 
-* No obstante,como veremos después, podemos hacer otras cosas.
+* No obstante, como veremos después, podemos hacer otras cosas.
 ---
 
 ## Ejemplo
@@ -587,7 +588,7 @@ Todo bien porque cliente_id es único en clientes y el join funciona correctamen
 
 
 ---
-# Keys (Llaves)
+# Llaves
 
 Una vez identificada una llave primaria, es útil comprobar que es correcta
 
@@ -621,7 +622,7 @@ weather %&gt;%
 ```
 
 ---
-# Keys (Llaves)
+# Llaves
 
 * A veces no existen llaves primarias! No hay una combinación de variables que identifique unívocamente cada observación.
 
@@ -908,9 +909,9 @@ x %&gt;%
 
 &lt;img src="img/join-one-to-many.png" width="55%" style="display: block; margin: auto;" /&gt;
 
-* Caso 1: Una sola tablas tiene llaves duplicadas
+* Caso 1: Una sola tabla tiene llaves duplicadas
 
-* Caso 2: Ambas tablas tiene llaves duplicadas
+* Caso 2: Ambas tablas tienen llaves duplicadas
 
 ---
 # Llaves duplicadas - Caso 1
@@ -1105,7 +1106,7 @@ class: center, middle, inverse
 Similar a los mutating joins, pero afectan a observaciones, no a variables!
 Dos tipos
 
-* `semi_join(x,y)`: mantienen todas las observaciones de `x` que tienen pareja en
+* `semi_join(x,y)`: mantiene todas las observaciones de `x` que tienen pareja en
 `y`
 * `anti_join(x,y)`: elimina todas las observaciones de `x` que tienen pareja en
 `y`

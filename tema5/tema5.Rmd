@@ -1,7 +1,7 @@
 ---
 title: "Tema 5"
 author: "Roi Naveiro"
-date: ""
+date: "Curso 2026-2027"
 output: 
    xaringan::moon_reader:
     css: "ds_slides.css"
@@ -35,6 +35,7 @@ class: center, middle, inverse, title-slide
 <br>
 .pull-left[
 ### Roi Naveiro
+#### Curso 2026-2027
 ]
 ---
 ## Informes
@@ -55,7 +56,7 @@ R Markdown es un formato para escribir informes reproducibles con R. Se utiliza 
 1. Abre un fichero Rmd
 2. Escribe **contenido**
 3. Incluye **código**
-4. Renderizalo en el formato deseado
+4. Renderízalo en el formato deseado
 
 ---
 ## Abrir fichero RMD
@@ -67,7 +68,7 @@ knitr::include_graphics("img/1.png")
 library(tidyverse)
 ```
 
-* Elegir format que interese: pdf o html para este curso.
+* Elegir el formato que interese: pdf o html para este curso.
 
 ---
 ## Rellenar el encabezado

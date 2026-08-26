@@ -4,7 +4,7 @@
     <title>Tema 3.3</title>
     <meta charset="utf-8" />
     <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -28,6 +28,7 @@ class: center, middle, inverse, title-slide
 &lt;br&gt;
 .pull-left[
 ### Roi Naveiro
+#### Curso 2026-2027
 ]
 ---
 
@@ -250,7 +251,7 @@ str_to_title(x)
 Permiten describir patrones en strings. Se pueden hacer varias cosas con los
 patrones
 
-* Determinar que strings cumplen el patrón. 
+* Determinar qué strings cumplen el patrón. 
 
 * Determinar en qué posición aparece el patrón
 
@@ -270,7 +271,7 @@ x3 &lt;- "Resido en España (ES)"
 ---
 ## Strings: expresiones regulares
 
-Vamos aprender a jugar con patrones muy sencillos. Primero, coincidencia 
+Vamos a aprender a jugar con patrones muy sencillos. Primero, coincidencia 
 exacta (ojo mayúsculas y minúsculas!)
 
 
@@ -286,7 +287,7 @@ str_view(x, "Le")
 ---
 ## Strings: expresiones regulares
 
-Para identificar cualquier caracter usamos `.`
+Para identificar cualquier carácter usamos `.`
 
 
 ``` r
@@ -518,7 +519,7 @@ class: center, middle, inverse
 
 * Para trabajar con variables categóricas con número fijo de valores
 
-* Trabajaremos con `forcats` de tiduverse
+* Trabajaremos con `forcats` de tidyverse
 
 * Crear factores
 
@@ -775,7 +776,7 @@ class: center, middle, inverse
 ---
 ## Fechas y horas
 
-Para trabajar con fechas y horas usamos `lubridate` que **NO** es parte tidyverse.
+Para trabajar con fechas y horas usamos `lubridate` que **NO** es parte de tidyverse.
 Descárgalo y cárgalo en R
 
 
@@ -804,7 +805,7 @@ today()
 ```
 
 ```
-## [1] "2025-03-30"
+## [1] "2026-08-26"
 ```
 
 ``` r
@@ -812,7 +813,7 @@ str(today())
 ```
 
 ```
-##  Date[1:1], format: "2025-03-30"
+##  Date[1:1], format: "2026-08-26"
 ```
 
 ``` r
@@ -820,7 +821,7 @@ now()
 ```
 
 ```
-## [1] "2025-03-30 13:55:21 CEST"
+## [1] "2026-08-26 18:12:12 CEST"
 ```
 
 ``` r
@@ -828,7 +829,7 @@ str(now())
 ```
 
 ```
-##  POSIXct[1:1], format: "2025-03-30 13:55:21"
+##  POSIXct[1:1], format: "2026-08-26 18:12:12"
 ```
 
 ---
@@ -965,7 +966,7 @@ as_datetime(today())
 ```
 
 ```
-## [1] "2025-03-30 UTC"
+## [1] "2026-08-26 UTC"
 ```
 
 ``` r
@@ -973,7 +974,7 @@ as_date(now())
 ```
 
 ```
-## [1] "2025-03-30"
+## [1] "2026-08-26"
 ```
 
 ---
@@ -1072,8 +1073,8 @@ month(datetime, label = TRUE)
 ```
 
 ```
-## [1] Jul
-## 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec
+## [1] jul
+## 12 Levels: ene &lt; feb &lt; mar &lt; abr &lt; may &lt; jun &lt; jul &lt; ago &lt; sept &lt; ... &lt; dic
 ```
 
 ``` r
@@ -1081,14 +1082,14 @@ wday(datetime, label = TRUE, abbr = FALSE)
 ```
 
 ```
-## [1] Friday
-## 7 Levels: Sunday &lt; Monday &lt; Tuesday &lt; Wednesday &lt; Thursday &lt; ... &lt; Saturday
+## [1] viernes
+## 7 Levels: domingo &lt; lunes &lt; martes &lt; miércoles &lt; jueves &lt; ... &lt; sábado
 ```
 
 ---
 ## Fechas y horas - Componentes
 
-Podemo modificar componentes usando las mismas funciones
+Podemos modificar componentes usando las mismas funciones
 
 
 ``` r
@@ -1169,7 +1170,7 @@ mi_edad
 ```
 
 ```
-## Time difference of 11640 days
+## Time difference of 12154 days
 ```
 
 - Este objeto representa una diferencia de tiempo, por defecto en días,
@@ -1188,13 +1189,13 @@ as.duration(mi_edad)
 ```
 
 ```
-## [1] "1005696000s (~31.87 years)"
+## [1] "1050105600s (~33.28 years)"
 ```
 
 ---
 ## Fechas y horas - Operaciones con duraciones
 
-Funciones úliles. Siempre en segundos!!
+Funciones útiles. Siempre en segundos!!
 
 
 ``` r
@@ -1232,7 +1233,7 @@ ddays(0:5)
 ---
 ## Fechas y horas - Operaciones con duraciones
 
-Funciones úliles. Siempre en segundos!!
+Funciones útiles. Siempre en segundos!!
 
 
 ``` r
@@ -1279,7 +1280,7 @@ mañana
 ```
 
 ```
-## [1] "2025-03-31"
+## [1] "2026-08-27"
 ```
 
 ``` r
@@ -1288,7 +1289,7 @@ año_pasado
 ```
 
 ```
-## [1] "2024-03-29 18:00:00 UTC"
+## [1] "2025-08-25 18:00:00 UTC"
 ```
 
 ---
@@ -1301,7 +1302,7 @@ año_pasado
 
 
 ``` r
-ymd("2020-01-1") + months(1)   # "2020-02-29" (respeta el calendario)
+ymd("2020-01-1") + months(1)   # "2020-02-01" (respeta el calendario)
 ```
 
 ```
@@ -1309,7 +1310,7 @@ ymd("2020-01-1") + months(1)   # "2020-02-29" (respeta el calendario)
 ```
 
 ``` r
-ymd("2020-01-1") + dmonths(1)  # "2020-03-02" (30.44 días exactos)
+ymd("2020-01-1") + dmonths(1)  # "2020-01-31" (30.44 días exactos)
 ```
 
 ```
@@ -1445,10 +1446,10 @@ Este tema está fundamentalmente basado en  [R for Data Science](https://r4ds.ha
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightLines": true,
-"highlightStyle": "github",
-"countIncrementalSlides": false,
-"slideNumberFormat": "%current%"
+  "highlightLines": true,
+  "highlightStyle": "github",
+  "countIncrementalSlides": false,
+  "slideNumberFormat": "%current%"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
