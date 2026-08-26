@@ -1,5 +1,5 @@
 ---
-title: "Lab 06 - Strings, factores y fechas"
+title: "Lab 3.3 - Strings, factores y fechas"
 output:
   html_document:
     css: ./ds_labs.css
@@ -33,9 +33,9 @@ library(tidyquant)
 ## Ejercicio 1
 
 En la base de datos `flights` las variables `dep_time`, `arr_time`, `sched_dep_time`
-y `sched_arr_time` contienen las horas en format de tres o cuatro dígitos.
+y `sched_arr_time` contienen las horas en formato de tres o cuatro dígitos.
 Así, 830 son las 8 y media de la mañana y 2030 las ocho y media de la tarde.
-Una posbilidad para extraer la hora y los minutos de estas fechas es la siguiente:
+Una posibilidad para extraer la hora y los minutos de estas horas es la siguiente:
 
 ```{r}
 time <- 2030
@@ -124,7 +124,7 @@ Repite la visualización anterior, pero usando un color diferente para cada zona
 horaria del aeropuerto de destino. ¿Qué observas?
 
 **Pista**: la zona horaria de los diferentes aeropuertos está en la 
-base de datos `airport` y se llama `tzone`.
+base de datos `airports` y se llama `tzone`.
 
 
 ### Solución
@@ -135,7 +135,7 @@ flights_dt %>% left_join(airports, by=c("dest"="faa")) %>% mutate(diff_time = ar
 
 ## Ejercicio 6
 
-La libraría `tidyquant` se puede utilizar para importar a R infinidad de datos económicos. En particular, se puede usar para importar datos sobre el precio
+La librería `tidyquant` se puede utilizar para importar a R infinidad de datos económicos. En particular, se puede usar para importar datos sobre el precio
 de diferentes acciones.
 
 Extraer el histórico de precios de AMZN desde el año 2000 es muy sencillo:
@@ -145,13 +145,13 @@ prices  <- tq_get("AMZN", get = "stock.prices", from = " 2000-01-01")
 prices 
 ```
 
-Crea una visualización para que permita estudiar la variación del precio de 
-apertura de la acción de AMZN en el tiempo. ¿En qué fechas se alcazan precios de 
+Crea una visualización que permita estudiar la variación del precio de 
+apertura de la acción de AMZN en el tiempo. ¿En qué fechas se alcanzan precios de 
 apertura máximos y mínimos?
 
 Al inicio de la pandemia, a causa de la cuarentena obligatoria establecida por
 numerosos países, las expectativas del mercado sobre Amazon se dispararon.
-Imagina que hubiéses comprado acciones de Amazon el día 2 de Marzo de 2020 por
+Imagina que hubieses comprado acciones de Amazon el día 2 de marzo de 2020 por
 un valor de 5000 euros. Calcula las ganancias netas obtenidas si hubieses vendido
 esas acciones un año después. (Utiliza los precios de apertura).
 
@@ -230,7 +230,7 @@ gss_cat %>%  mutate(rincome = fct_collapse( rincome,
 
 ## Ejercicio 9
 
-Los datos contenidos en `amazon_reviews.csv` contienen reviews y notas que ciertos usuarios han dado a una serie de productos de amazon. Las variables incluidas son:
+Los datos contenidos en `amazon_reviews.csv` contienen reviews y notas que ciertos usuarios han dado a una serie de productos de Amazon. Las variables incluidas son:
 
 * `review`: texto de la review
 * `rate`: nota (del 1 al 5)

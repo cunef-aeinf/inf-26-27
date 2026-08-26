@@ -46,7 +46,7 @@ pares de variables:
 
 ## Ejercicio 2
 
-Ajusta un modelo lineal donde la variable predictora sea `carat` (el peso de los diamantes ) y la variable dependiente sea `price`. Obtén el valor de los coeficientes e interprétalos. ¿Qué conclusión extraes?
+Ajusta un modelo lineal donde la variable predictora sea `carat` (el peso de los diamantes) y la variable dependiente sea `price`. Obtén el valor de los coeficientes e interprétalos. ¿Qué conclusión extraes?
 
 
 ### Solución
@@ -64,7 +64,7 @@ Extrae conclusiones.
 
 Crea un nuevo conjunto de datos llamado `diamonds2` donde elimines todos los
 diamantes de carat mayor que 2.5. Añade dos variables a este conjunto de datos
-llamandas `lcarat` y `lprice` que correspondan respectivamente a logaritmo en base 
+llamadas `lcarat` y `lprice` que correspondan respectivamente a logaritmo en base 
 dos de `carat` y `price`.
 
 ### Solución
@@ -72,7 +72,7 @@ dos de `carat` y `price`.
 
 ## Ejercicio 5
 
-Utilizando los datos creados en el ejercicio anterior, ajusta un modelo lineal donde la variable predictora sea `lcarat` y la variable dependiente sea `lprice`. Obtén el valor de los coeficientes e interprétalos. Según este modelo, que le sucede al precio de un diamante si multiplico por dos su `carat`.
+Utilizando los datos creados en el ejercicio anterior, ajusta un modelo lineal donde la variable predictora sea `lcarat` y la variable dependiente sea `lprice`. Obtén el valor de los coeficientes e interprétalos. Según este modelo, ¿qué le sucede al precio de un diamante si multiplico por dos su `carat`?
 
 ### Solución
 
@@ -175,7 +175,7 @@ Si nuestra variable respuesta `y` es cualitativa y tenemos, por ejemplo, dos pre
 log_reg <- glm( y ~ x1 + x2, data = data, family = binomial(link='logit'))
 ```
 
-Vamos a utilizar una regresión logística para intentar predecir si los pasajeros del titanic sobrevivieron o no, utilizando como variables predictores por ejemplo el sexo, la edad, la clase de su ticket, etc.
+Vamos a utilizar una regresión logística para intentar predecir si los pasajeros del titanic sobrevivieron o no, utilizando como variables predictoras por ejemplo el sexo, la edad, la clase de su ticket, etc.
 
 Primero instala la librería `titanic` y carga los datos:
 
@@ -216,16 +216,16 @@ respuesta sea `Survived` y la variable predictora sea `Sex`.
 
 La predicción de una regresión logística es una probabilidad correspondiente a la probabilidad de que la variable respuesta tome valor 1 (en nuestro caso que el pasajero correspondiente sobreviva) según el modelo.
 
-Calcula las predicciones del modelo anterior sobre los datos `test`. Necesitarás añadir type="response" a la funcion add_predictions. Construye una nueva variable que tome valor 1 si la probabilidad predicha es mayor o igual a 0.5 y cero en caso contrario.
+Calcula las predicciones del modelo anterior sobre los datos `test`. Necesitarás añadir type="response" a la función add_predictions. Construye una nueva variable que tome valor 1 si la probabilidad predicha es mayor o igual a 0.5 y cero en caso contrario.
 
-Finalmente, calcula el procentaje de aciertos comparando la variable recién creada y la variable Survived.
+Finalmente, calcula el porcentaje de aciertos comparando la variable recién creada y la variable Survived.
 
 ### Solución
 
 
 ## Ejercicio 15
 
-Intenta mejorar el model anterior añadiendo más variables. ¿Qué variable crees que tiene más poder predictivo?
+Intenta mejorar el modelo anterior añadiendo más variables. ¿Qué variable crees que tiene más poder predictivo?
 
 ### Solución
 

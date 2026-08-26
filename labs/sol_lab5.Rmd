@@ -1,5 +1,5 @@
 ---
-title: "Lab 05 - Data Wrangling"
+title: "Lab 3.2 - Data Wrangling"
 output:
   html_document:
     css: ./ds_labs.css
@@ -75,7 +75,7 @@ conversion %>% head()
 
 ## Ejercicio 2
 
-Para comparar salarios en distinta moneda, nos guataría agregar a los datos de 
+Para comparar salarios en distinta moneda, nos gustaría agregar a los datos de 
 `kaggle_survey_subset.csv` una columna llamada `exchangeRate` con la tasa de 
 conversión a la divisa correspondiente. Esta columna se encuentra en el 
 dataset `kaggle_conversionRates.csv`.
@@ -127,14 +127,14 @@ Recrea el siguiente gráfico.
 `fct_reorder`. Busca en internet su uso.
 
 **Pista**: para crear un gráfico de barras **bivariante**, especifica
-el eje x e y en aes y añande `geom_bar(stat="identity")`. Recuerda que puedes
+el eje x e y en aes y añade `geom_bar(stat="identity")`. Recuerda que puedes
 invertir las coordenadas con `coord_flip()`.
 
 ### Solución
 
 
 ```{r}
-ggplot(compensation_summary, aes(x=fct_reorder(Major,medianCompensation), y=medianCompensation)) + geom_bar(stat="identity") + labs(title="Salario mediano de científicos de datos", subtitle="2017 Kaggle Survey", x="Salario (USD)", y="") + coord_flip() + theme_minimal()
+ggplot(compensation_summary, aes(x=fct_reorder(Major,medianCompensation), y=medianCompensation)) + geom_bar(stat="identity") + labs(title="Salario mediano de científicos de datos", subtitle="2017 Kaggle Survey", x="", y="Salario (USD)") + coord_flip() + theme_minimal()
 ```
 
 
@@ -151,9 +151,9 @@ us_rent_income %>% pivot_wider(names_from = variable, values_from = c(estimate, 
 
 
 
-### Ejercicio 7
+## Ejercicio 7
 
-Extrae los aeropuertos de la base de datos `airports` para los cuales existe algún vuelo cuyo destino sea ese aeropuesto dentro de la base de datos `flights`.
+Extrae los aeropuertos de la base de datos `airports` para los cuales existe algún vuelo cuyo destino sea ese aeropuerto dentro de la base de datos `flights`.
 
 ### Solución
 
@@ -163,7 +163,7 @@ airports %>% semi_join(flights, by=c("faa"="dest"))
 ```
 
 
-### Ejercicio 8
+## Ejercicio 8
 
 (Difícil)
 Representa un mapa de los Estados Unidos donde cada aeropuerto de destino aparezca como un punto.
@@ -200,7 +200,7 @@ flights %>% filter( !(dest %in% c("ANC", "HNL")) ) %>% left_join(airports, by=c(
 
 ## Ejercicio 9
 
-Elabora una visualización similar a la anterior donde muestres la distribución espacial del retraso medio de los vuelos del día 13 de Junio. Compara esta distribución la de otro día, por ejemplo el 13 de Mayo. ¿Qué observas? Intenta determinar el origen del patrón (buscando en Google). Representa ambos mapas en el mismo gráfico.
+Elabora una visualización similar a la anterior donde muestres la distribución espacial del retraso medio de los vuelos del día 13 de Junio. Compara esta distribución con la de otro día, por ejemplo el 13 de Mayo. ¿Qué observas? Intenta determinar el origen del patrón (buscando en Google). Representa ambos mapas en el mismo gráfico para mayor claridad.
 
 ### Solución
 
@@ -232,7 +232,7 @@ flights %>%
 
 ## Ejercicio 11
 
-Estudia la relación entre la edad de los aviones y el retraso medio de los vuelos. Para ello, tendrás que juntar la base de datos `planes` con `flights`, y crear una nueva variable llamada `age`, que corresponda a la edad del avión que realizó el vuelo, en años. Asigna edad 25 a los aviones con más de 25 años antes de estudiar la relación entre el retraso medio y la variable `age`. ¿Qué observas? Justifica tu respuesta con una visualización y tratar de dar una posible explicación al fenómeno observado.
+Estudia la relación entre la edad de los aviones y el retraso medio de los vuelos. Para ello, tendrás que juntar la base de datos `planes` con `flights`, y crear una nueva variable llamada `age`, que corresponda a la edad del avión que realizó el vuelo, en años. Asigna edad 25 a los aviones con más de 25 años antes de estudiar la relación entre el retraso medio y la variable `age`. ¿Qué observas? Justifica tu respuesta con una visualización y trata de dar una posible explicación al fenómeno observado.
 
 ### Solución
 
