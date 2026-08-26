@@ -1,7 +1,7 @@
 ---
 title: "Tema 1"
 author: "Roi Naveiro"
-date: ""
+date: "Curso 2026-2027"
 output: 
    xaringan::moon_reader:
     css: "ds_slides.css"
@@ -36,6 +36,7 @@ class: center, middle, inverse, title-slide
 <br>
 .pull-left[
 ### Roi Naveiro
+#### Curso 2026-2027
 ]
 
 
