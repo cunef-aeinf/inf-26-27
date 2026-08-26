@@ -1,3 +1,6 @@
 .DS_Store
 .Rhistory
 .Rproj.user/
+
+# Guías docentes: no publicar en la web
+2026-27_G*.pdf
