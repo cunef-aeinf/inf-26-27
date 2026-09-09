@@ -38,12 +38,12 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
   - [Diapositivas](./tema1/tema1.html)
 
 
-<!-- PENDIENTE DE PUBLICAR: descomentar cada tema a medida que avance el curso.
-
 ### Tema 2 : Análisis Exploratorio de los Datos
 - 2.1: Visualización de datos
   - [Diapositivas](./tema2/tema2-1.html)
 
+
+<!-- PENDIENTE DE PUBLICAR: descomentar cada tema a medida que avance el curso.
 
 - 2.2: Transformación de datos
   - [Diapositivas](./tema2/tema2-2.html)
@@ -84,11 +84,11 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
   - [Ejercicios](./labs/lab1.html)
 
 
-<!-- PENDIENTE DE PUBLICAR: descomentar cada laboratorio a medida que avance el curso.
-
 ### Lab 2.1 - Visualización
   - [Ejercicios](./labs/lab2-1.html)
 
+
+<!-- PENDIENTE DE PUBLICAR: descomentar cada laboratorio a medida que avance el curso.
 
 ### Lab 2.2 - Transformación
   - [Ejercicios](./labs/lab2-2.html)
