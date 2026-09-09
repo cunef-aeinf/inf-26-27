@@ -416,7 +416,8 @@ una variable extra
 ## Representamos el continente
 
 ```{r, fig.align='center',out.extra='angle=90'}
-ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent) ) +   #<<
+ggplot(gapminder67, mapping = aes(x = gdpPercap,   #<<
+                        y = lifeExp, color = continent) ) +   #<<
      geom_point() +
      scale_x_log10()
 ```
@@ -425,7 +426,8 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent)
 ## Representamos el continente
 
 ```{r, fig.align='center',out.extra='angle=90'}
-ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent,  #<<
+ggplot(gapminder67, mapping = aes(x = gdpPercap,  #<<
+                        y = lifeExp, color = continent,  #<<
                         shape = continent) ) +   #<<
      geom_point() +
      scale_x_log10()
@@ -435,7 +437,8 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent,
 ## Representamos el continente y la población
 
 ```{r, fig.align='center',out.extra='angle=90'}
-ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent,  #<<
+ggplot(gapminder67, mapping = aes(x = gdpPercap,  #<<
+                        y = lifeExp, color = continent,  #<<
                         shape = continent, size = pop) ) +   #<<
      geom_point() +
      scale_x_log10()
@@ -445,7 +448,8 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent,
 ## Representamos el continente y la población
 
 ```{r, fig.align='center',out.extra='angle=90'}
-ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent, 
+ggplot(gapminder67, mapping = aes(x = gdpPercap, 
+                        y = lifeExp, color = continent, 
                         shape = continent, size = pop) ) +  
      geom_point(size=3) +  #<<
      scale_x_log10()

@@ -283,3 +283,13 @@ div.my-footer a {
     color: #C1C6C8;
 }
 
+
+
+/* Los titulos largos pasaban por debajo del logo de la esquina superior
+   derecha (.logo, 110px, right:1em). Se reserva ese hueco solo en las
+   diapositivas de contenido: las centradas y la portada no llevan h2
+   alineado a la izquierda y desplazarlas romperia su centrado. */
+.remark-slide-content:not(.title-slide):not(.center) h1,
+.remark-slide-content:not(.title-slide):not(.center) h2 {
+  padding-right: 140px;
+}
