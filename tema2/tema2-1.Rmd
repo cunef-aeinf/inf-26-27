@@ -732,7 +732,7 @@ ggplot(gapminder67, mapping = aes(x = continent, y = gdpPercap)) +
 
 ---
 ## Datos bivariantes: continuo - categórico
-```{r, echo=FALSE, out.width = '50%',  fig.align='center'}
+```{r, echo=FALSE, out.width = '32%',  fig.align='center'}
 knitr::include_graphics("img/boxplot.png")
 ```
 
@@ -964,7 +964,7 @@ class: center, middle
 ---
 ## Consejos
 
-[https://blog.csgsolutions.com/6-tips-for-creating-effective-data-visualizations](https://blog.csgsolutions.com/6-tips-for-creating-effective-data-visualizations)
+[Friends Don't Let Friends Make Bad Graphs](https://github.com/cxli233/FriendsDontLetFriends)
 ---
 
 

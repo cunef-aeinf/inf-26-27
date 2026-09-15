@@ -299,5 +299,5 @@ div.my-footer a {
    grafico fuera del borde inferior de la diapositiva. Se limita la altura
    conservando la proporcion; solo actua cuando la figura no cabria. */
 .remark-slide-content:not(.title-slide) img {
-  max-height: 400px;
+  max-height: 480px;
 }
