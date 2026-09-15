@@ -723,7 +723,7 @@ class: center, middle
 
 ---
 
-## Visualización: datos bivariantes continuo - categórico
+## Datos bivariantes: continuo - categórico
 
 ```{r}
 ggplot(gapminder67, mapping = aes(x = continent, y = gdpPercap)) + 
@@ -731,13 +731,13 @@ ggplot(gapminder67, mapping = aes(x = continent, y = gdpPercap)) +
 ```
 
 ---
-## Visualización: datos bivariantes continuo - categórico
+## Datos bivariantes: continuo - categórico
 ```{r, echo=FALSE, out.width = '50%',  fig.align='center'}
 knitr::include_graphics("img/boxplot.png")
 ```
 
 ---
-## Visualización: datos bivariantes continuo - continuo
+## Datos bivariantes: continuo - continuo
 
 A veces queda bien añadir un ajuste
 ```{r, fig.align='center',out.extra='angle=90', fig.width=6, fig.height=4}
@@ -748,7 +748,7 @@ ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +
 ```
 
 ---
-## Visualización: datos bivariantes categórico - categórico
+## Datos bivariantes: categórico - categórico
 
 Dataset `diamonds`
 
@@ -758,7 +758,7 @@ ggplot(data = diamonds, mapping = aes(x = clarity, fill = cut)) +
 ```
 
 ---
-## Visualización: datos bivariantes categórico - categórico
+## Datos bivariantes: categórico - categórico
 
 Dataset `diamonds`
 

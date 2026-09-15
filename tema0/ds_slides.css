@@ -294,3 +294,11 @@ div.my-footer a {
 .remark-slide-content:not(.title-slide):not(.center) h2 {
   padding-right: 140px;
 }
+
+/* Red de seguridad: las imagenes tenian max-width pero no max-height, asi
+   que una figura alta (o un titulo que ocupa varias lineas) empujaba el
+   grafico fuera del borde inferior de la diapositiva. Se limita la altura
+   conservando la proporcion; solo actua cuando la figura no cabria. */
+.remark-slide-content:not(.title-slide) img {
+  max-height: 400px;
+}
