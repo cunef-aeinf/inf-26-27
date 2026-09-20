@@ -20,7 +20,7 @@ output:
 
 ```{r packages_setup, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = T, warning = F, message = F)
-knitr::opts_chunk$set(fig.width=8, fig.height=6) 
+knitr::opts_chunk$set(fig.width=8, fig.height=6, fig.retina=3) 
 ```
 
 class: center, middle, inverse, title-slide

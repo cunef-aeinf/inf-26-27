@@ -115,7 +115,7 @@ ggplot(data=mtcars, aes(x=gear)) +
   labs(x = "Número de marchas")
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-1-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Variación: variable categórica
@@ -151,7 +151,7 @@ ggplot(data=iris, aes(x=Petal.Length)) +
   labs(x = "Longitud del Pétalo (cm)")
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-3-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -183,7 +183,7 @@ ggplot(data=iris, aes(x=Petal.Length)) +
   labs(x = "Longitud del Pétalo (cm)")
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-4-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Ejemplo: longitud de pétalo
@@ -221,7 +221,7 @@ ggplot(data=iris, aes(x=Petal.Length, fill=Species)) +
   labs(x = "Longitud del Pétalo (cm)")
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-5-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -234,7 +234,7 @@ ggplot(data=iris, aes(x=Petal.Length, color=Species)) +
   labs(x = "Longitud del Pétalo (cm)")
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-6-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Variación: valores atípicos
@@ -257,7 +257,7 @@ ggplot(diamonds, aes(x=y)) +
   geom_histogram(binwidth = 0.5)
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-7-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Ejemplo: anchura de los diamantes
@@ -271,7 +271,7 @@ ggplot(diamonds, aes(x=y)) +
   coord_cartesian( ylim = c(0,50) )
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-8-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Ejemplo: anchura de los diamantes
@@ -361,7 +361,7 @@ ggplot(data=diamonds2, mapping = aes(x=x, y=y))+
 ## (`geom_point()`).
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-12-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Valores ausentes
@@ -373,7 +373,7 @@ ggplot(data=diamonds2, mapping = aes(x=x, y=y))+
   geom_point(na.rm = T)
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-13-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -404,7 +404,7 @@ ggplot(data=diamonds, aes(x=price, color=cut)) +
   geom_freqpoly()
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-14-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -417,7 +417,7 @@ ggplot(data=diamonds, aes(x=price, y=..density.., color=cut)) +
   geom_freqpoly()
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-15-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -432,7 +432,7 @@ ggplot(data = mpg, aes(x = class, y = hwy)) +
   geom_boxplot()
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-16-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -446,7 +446,7 @@ A veces, conviene reordenar...
   geom_boxplot()
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-17-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -460,7 +460,7 @@ ggplot(data = diamonds, aes(x = cut, y = color)) +
 * geom_count()
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-18-1.png" width="504" style="display: block; margin: auto;" /&gt;
 ---
 
 ## Covariación: Categórica - Categórica
@@ -534,7 +534,7 @@ diamonds %&gt;%
 * geom_tile()
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-21-1.png" width="432" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Covariación: Continua - Continua
@@ -554,7 +554,7 @@ ggplot(data=diamonds, aes(x = carat, y = price)) +
 * geom_point(alpha = 0.01)
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-22-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Covariación: Continua - Continua
@@ -567,7 +567,7 @@ ggplot(data=diamonds, aes(x = carat, y = price)) +
 * geom_bin2d()
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-23-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -582,7 +582,7 @@ ggplot(data=diamonds, aes(x = carat, y = price)) +
 * geom_hex()
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-24-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Covariación: Continua - Continua
@@ -595,7 +595,7 @@ ggplot(data=diamonds, aes(x = carat, y = price, )) +
 * geom_boxplot(aes(group = cut_width(carat, 0.1)) )
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-25-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -609,7 +609,7 @@ ggplot(data=diamonds, aes(x = carat, y = price, )) +
 * geom_boxplot(aes(group = cut_number(carat, 20)) )
 ```
 
-&lt;img src="tema2-3_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-26-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle, inverse
