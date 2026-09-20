@@ -302,3 +302,10 @@ div.my-footer a {
 .remark-slide-content:not(.title-slide) img {
   max-height: 480px;
 }
+
+/* .midi reduce el tamano de fuente, pero .remark-code fija 12pt en
+   absoluto y ganaba. Se baja explicitamente el codigo dentro de .midi,
+   para las diapositivas cuya salida no cabe por poco. */
+.midi .remark-code, .midi .remark-code span {
+  font-size: 10pt;
+}

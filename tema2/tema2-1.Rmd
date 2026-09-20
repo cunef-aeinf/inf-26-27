@@ -812,6 +812,7 @@ ggplot(data = diamonds) +
 
 Podemos crear estadísticos propios
 
+.midi[
 ```{r out.width = "70%", fig.align='center', fig.width=5, fig.height=3}
 ggplot(data = diamonds) + 
   stat_summary( #<<
@@ -821,6 +822,7 @@ ggplot(data = diamonds) +
     fun = median #<<
   )
 ```
+]
 
 
 ---
