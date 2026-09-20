@@ -545,7 +545,7 @@ ggplot(gapminder67,
      scale_x_log10()  # convert to log scale
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-16-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-16-1.png" width="504" angle=90 style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -563,7 +563,7 @@ ggplot(gapminder67,
      scale_x_log10()  # convert to log scale
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-17-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-17-1.png" width="504" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -580,7 +580,7 @@ gapminder67 &lt;- gapminder %&gt;% filter(year == "1967")
      scale_x_log10()  
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-18-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-18-1.png" width="504" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -672,7 +672,7 @@ ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +
      geom_point() 
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-24-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-24-1.png" width="504" angle=90 style="display: block; margin: auto;" /&gt;
 
 ¿Cómo describirías la relación entre PIB per Cápita y esperanza de vida?
 
@@ -685,7 +685,7 @@ ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +
 *    scale_x_log10()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-25-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-25-1.png" width="504" angle=90 style="display: block; margin: auto;" /&gt;
 
 ¿Cómo describirías la relación entre PIB per Cápita y esperanza de vida?
 
@@ -732,7 +732,7 @@ una variable extra
      scale_x_log10()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-26-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-26-1.png" width="504" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 ## Representamos el continente
@@ -746,7 +746,7 @@ una variable extra
      scale_x_log10()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-27-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-27-1.png" width="504" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 ## Representamos el continente y la población
@@ -760,7 +760,7 @@ una variable extra
      scale_x_log10()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-28-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-28-1.png" width="504" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 ## Representamos el continente y la población
@@ -774,7 +774,7 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap,
      scale_x_log10()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-29-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-29-1.png" width="504" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 ## Resumen
@@ -818,7 +818,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 * facet_grid(. ~ continent)
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-30-1.png" width="468" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -836,7 +836,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 * facet_grid(continent ~ .)
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-31-1.png" width="468" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -854,7 +854,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 * facet_wrap(continent ~ .)
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-32-1.png" width="468" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -872,7 +872,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 * facet_wrap(continent ~ ., scales = "free_x")
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-33-1.png" width="468" style="display: block; margin: auto;" /&gt;
 
 ---
 # Faceting - Resumen
@@ -1062,7 +1062,7 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap)) +
 *    geom_histogram(binwidth = 1000)
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-35-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-35-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1075,7 +1075,7 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap)) +
 *    geom_histogram(bins = 100)
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-36-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-36-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1088,7 +1088,7 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap)) +
 *    geom_density()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-37-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-37-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -1106,7 +1106,7 @@ ggplot(gapminder67, mapping = aes(x = continent)) +
 * geom_bar()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-38-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-38-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle
@@ -1123,7 +1123,7 @@ ggplot(gapminder67, mapping = aes(x = continent, y = gdpPercap)) +
 * geom_boxplot()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-39-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-39-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Datos bivariantes: continuo - categórico
@@ -1141,7 +1141,7 @@ ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +
 *    geom_smooth()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-41-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-41-1.png" width="432" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 ## Datos bivariantes: categórico - categórico
