@@ -207,11 +207,13 @@ Algunos parámetros importantes
 
 * Por defecto, asume que hay header y que el separador es la coma
 
+.midi[
 ```{r}
 # Así leemos datos con read.csv
 red_wine_data <- read.csv("data/red_qualities.csv", sep=";")
 red_wine_data %>% head(5)
-``` 
+```
+] 
 
 
 ---

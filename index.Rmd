@@ -47,8 +47,6 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
   - [Diapositivas](./tema2/tema2-2.html)
 
 
-<!-- PENDIENTE DE PUBLICAR: descomentar cada tema a medida que avance el curso.
-
 - 2.3: Análisis Exploratorio de datos
   - [Diapositivas](./tema2/tema2-3.html)
 
@@ -58,6 +56,8 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
   - 3.1: Importación de datos
     - [Diapositivas](./tema3/tema3-1.html)
 
+
+<!-- PENDIENTE DE PUBLICAR: descomentar cada tema a medida que avance el curso.
 
   - 3.2: Organización de datos
     - [Diapositivas](./tema3/tema3-2.html)
@@ -92,11 +92,11 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
   - [Ejercicios](./labs/lab2-2.html)
 
 
-<!-- PENDIENTE DE PUBLICAR: descomentar cada laboratorio a medida que avance el curso.
-
 ### Lab 3.1 - Importación
   - [Ejercicios](./labs/lab3-1.html)
 
+
+<!-- PENDIENTE DE PUBLICAR: descomentar cada laboratorio a medida que avance el curso.
 
 ### Lab 3.2 - Data Wrangling
   - [Ejercicios](./labs/lab3-2.html)
